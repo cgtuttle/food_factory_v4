@@ -1,0 +1,12 @@
+<div class="row mt-3">
+  <div class="col-6">
+    <span>
+      <span><%= link_to controller: controller_name, action: "edit", id: @id do %>
+        <i class="fas fa-edit mr-2" data-toggle="tooltip" data-placement="top" title="Edit"></i></a></span>
+      <% end %>
+      <span><%= link_to @path, method: "delete", data: {confirm: "Are you sure?"} do %>
+        <i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top" title="Delete" ></i></a></span>
+      <% end %>
+    </span>
+  </div>
+</div>

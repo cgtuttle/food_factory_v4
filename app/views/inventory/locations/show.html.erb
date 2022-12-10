@@ -1,0 +1,14 @@
+<% @label = "ID" %>
+<% @field = @location.id %>
+<%= render "application/show_row" %>
+
+<% @label = "Code" %>
+<% @field = @location.code %>
+<%= render "application/show_row" %>
+
+<% @label = "Name" %>
+<% @field = @location.name %>
+<%= render "application/show_row" %>
+
+<% @id = @location.id %>
+<% @path = location_path(@location) %>

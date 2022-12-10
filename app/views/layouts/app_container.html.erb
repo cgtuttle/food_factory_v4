@@ -1,0 +1,34 @@
+<% content_for :secure do %>
+
+  <div class="full-height d-flex flex-column">
+          
+    <%= render "layouts/navbar" %>
+    
+    <div class="flex-grow-1 d-flex align-items-stretch" id="app-window">
+      
+      <nav id="sidebar" class="d-none d-xl-block">
+        <%= render "/layouts/accordion_menu" %>
+      </nav>
+      
+      <div id="content-window">
+
+        <div class="window sticky">
+
+          <div class="sidebar-toggle mr-5 ">
+            <%= render "/application/shared/sidebar_toggle" %> 
+          </div>
+
+          <h3 class="app-title"><%= content_for?(:context_title) ? yield(:context_title) : app_page_title %></h3>
+
+        </div>
+
+        <%= content_for?(:content) ? yield(:content) : yield %>
+      </div>
+      
+    </div> 
+    
+  </div>
+  
+<% end %>
+
+<%= render template: "layouts/application" %>

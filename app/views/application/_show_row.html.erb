@@ -1,0 +1,11 @@
+  <div class="row">
+    <div class="col show-table-row">
+      <p class="show-label">
+          <%= @label %>
+        </p>
+        <span class="dots"></span>
+        <span class="show-value">
+          <%= @field.present? ? @field : "[None]" %>
+      </span>
+    </div>
+  </div>

@@ -1,0 +1,21 @@
+<div class="table-responsive">
+  <table class="table table-sm">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col" class="line-number">Line #</th>
+        <th scope="col" class="record-id">Item Code</th>
+        <th scope="col" class="description">Description</th>
+        <th scope="col" class="qty text-right">Qty</th>
+        <th scope="col" class="dollar-2 text-right">PO Price</th>
+        <th scope="col" class="dollar-2 text-right">Sys Price</th>
+        <th scope="col" class="dollar-2 text-right">Total</th>
+        <th scope="col" class="icon-set"></th>
+      </tr>
+    </thead>
+    <tbody class="order-lines" id="order-lines">
+      <%= f.fields_for :lines, f.object.lines.order(:line_number), id: "order-lines-fields" do |line| %>
+        <%= render partial: '/sales/orders/index/form_sub_table/row', locals: { line: line } %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

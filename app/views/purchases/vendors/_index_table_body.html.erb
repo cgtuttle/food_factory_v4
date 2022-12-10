@@ -1,0 +1,12 @@
+<% @vendors.each do |vendor| %>
+  <tr>
+    <th scope="row"><%= vendor.id %></th>
+    <td><%= link_to vendor.code, vendor_path(vendor.id) %></td>
+    <td><%= vendor.name %></td>
+    <td><%= link_to "Orders", vendor_orders_path(vendor) %></td>
+    <td class="text-right">
+      <%= render "application/shared/link_edit", locals: { id: vendor.id, path: vendor_path(vendor) } %>
+      <%= render "application/shared/link_delete", locals: { id: vendor.id, path: vendor_path(vendor) } %>
+    </td>
+  </tr>
+<% end %>

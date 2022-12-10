@@ -1,0 +1,15 @@
+<%= form_tag '/company_sessions', role: 'form' do |f| %>
+
+  <% @companies.each do |company| %>
+    <div class="form-check mt-3">
+      <%= radio_button_tag "current_company", company.id, current_company.id == company.id, { class: "form-check-input", id: "company-#{company.id}"} %>
+      <%= label_tag "current_company", company.name, { class: "form-check-label"} %>
+    </div>
+  <% end %>
+
+  <div class="form-group mt-5">
+    <%= submit_tag 'Submit', class: 'btn btn-primary', id: 'new-company-session' %>
+    <%= link_to 'Cancel', :back, class: 'btn btn-secondary' %>
+  </div>  
+
+<% end %>

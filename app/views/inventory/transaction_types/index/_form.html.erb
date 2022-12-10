@@ -1,0 +1,20 @@
+<tr class="table-form-row">
+  
+  <th scope="row" class="form-cell"><%= f.text_field :code, class: "form-control form-control-sm" %> </th>
+  <th class="form-cell"><%= f.text_field :name, :class => "form-control form-control-sm" %></th>
+  <th class="form-cell"><%= f.select :default_direction, options_for_select([['Increase', 'increase'],['Decrease','decrease'],['None', 'none']]), {}, class: "form-control form-control-sm" %></th>
+  
+  <th class="text-right form-cell">
+    <div class="d-flex icon-group justify-content-between">
+      <%= render "application/shared/link_save" %>
+      <div class="icon"></div>
+      <div class="icon"></div>
+      <span class="icon">
+        <%= link_to transactions_path do %>
+          <i class="fas fa-trash-alt" title="Clear">
+        <% end %></i>
+      </div>
+    </div>
+  </th>
+</tr>
+

@@ -1,0 +1,35 @@
+<% @id = @customer.id %>
+<% @paths = [{path: customers_path, label: "Customers"}] %>
+<% @current_page = "#{@customer.name}" %>
+
+
+<% content_for :context_title do %>  
+  <%= "#{@customer.code} - #{@customer.name}" %>
+<% end %>
+    
+<% @label = "ID" %>
+<% @field = @customer.id %>
+<%= render "application/show_row" %>
+
+<% @label = "Name" %>
+<% @field = @customer.name %>
+<%= render "application/show_row" %>
+
+<hr/ class="list-header">
+
+<div class=row>
+  <div class="col">
+    <div class="row mt-4">
+      <div class="col text-center">
+        <h5>Customer Addresses</h4>
+      </div>
+    </div>
+    <% @addresses.each do |address| %>
+      <div class="row mt-3">
+        <div class="col">
+          <%= render partial: "address_cards", locals: {address: address} %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

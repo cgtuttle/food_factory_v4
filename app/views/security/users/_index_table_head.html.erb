@@ -1,0 +1,8 @@
+<tr>
+  <th scope="col">ID</th>
+  <th scope="col">Email</th>
+  <% if current_user.admin? %>
+    <th scope="col"><div class="text-center">Admin</div></th>
+  <% end %>
+  <th scope="col"></th>
+</tr>

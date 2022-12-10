@@ -1,0 +1,17 @@
+<% content_for :breadcrumbs do %>
+  <%= render 'breadcrumbs' %>
+<% end %>
+
+<% content_for :context_title do %>  
+  <%= "#{@customer.code} - #{@customer.name}" %>
+<% end %>
+
+<% content_for :head do %>
+  <%= render 'settings/addresses/index_table_head' %>
+<% end %>
+
+<% content_for :body do %>
+  <%= render 'settings/addresses/index_table_body' %>
+<% end %>
+
+

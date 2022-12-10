@@ -1,0 +1,9 @@
+
+
+<% @paths = [{path: customers_path, label: "Customers"}, {path: previous_path, label: "#{path_label}"}] %>
+<% @current_page = "#{@address.name}" %>
+
+
+<% content_for :context_title, "#{@customer.name} - #{@address.name}" %>
+
+<%= render "settings/addresses/show" %>

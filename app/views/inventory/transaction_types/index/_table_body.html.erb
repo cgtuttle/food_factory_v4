@@ -1,0 +1,15 @@
+<% @transaction_types.each do |type| %>
+  <tr>
+    <td><%= link_to type.code, transaction_type_path(type.id) %></td>
+    <td><%= type.name %></td>
+    <td><%= type.default_direction %></td>
+    <td class="text-right">
+      <div class="d-flex icon-group justify-content-between">
+        <div class="icon"></div>
+        <div class="icon"></div>
+        <%= render "application/shared/link_edit", locals: { id: type.id, path: transaction_type_path(type) } %>
+        <%= render "application/shared/link_delete", locals: { id: type.id, path: transaction_type_path(type) } %>
+      </div>
+    </td>
+  </tr>
+<% end %>

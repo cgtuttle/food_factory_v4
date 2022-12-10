@@ -1,0 +1,10 @@
+<% @units.each do |unit| %>
+  <tr>
+    <th scope="row"><%= unit.id %></th>
+    <td><%= link_to unit.code, unit_path(unit) %></td>
+    <td><%= unit.name %></td>
+    <td><%= unit.abbrev %></td>
+    <td><%= render "application/shared/link_edit", locals: { id: unit.id, path: unit_path(unit) } %></td>
+    <td><%= render "application/shared/link_delete", locals: { id: unit.id, path: unit_path(unit) } %></td>
+  </tr>
+<% end %>

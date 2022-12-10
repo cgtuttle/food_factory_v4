@@ -1,0 +1,21 @@
+  <tr class="table-form-row">
+    <th scope="row" class="form-cell"><%= f.text_field :code, class: "form-control form-control-sm" %></th>
+    <th class="form-group form-cell"><%= f.text_field :name, :class => "form-control form-control-sm" %></th>
+    <th class="form-group form-cell"><%= f.select :lot_format, ['Text', 'Date', 'Number'], {}, {class: "form-control form-control-sm"} %></th>
+    <th class="form-group form-check form-cell">
+      <div class="check-container"><%= f.check_box :product, class: "form-check-input cell-check-input" %></div>
+    </th>
+
+    <th class="text-right form-cell">
+      <div class="d-flex icon-group justify-content-between">
+        <%= render "application/shared/link_save" %>
+        <div class="icon"></div>
+        <div class="icon"></div>
+        <div class="icon">
+          <%= link_to item_classes_path do %>
+            <i class="fas fa-trash-alt" title="Clear">
+          <% end %></i>
+        </div>
+      </div>
+    </th>
+  </tr>

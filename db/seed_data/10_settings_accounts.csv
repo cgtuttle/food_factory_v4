@@ -1,0 +1,2 @@
+code,name,owner_id,owner_type,company_id
+ADMIN,admin@factorysync.com,1,Security::User,1

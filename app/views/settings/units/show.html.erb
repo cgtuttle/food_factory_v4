@@ -1,0 +1,18 @@
+<% @label = "ID" %>
+<% @field = @unit.id %>
+<%= render "application/show_row" %>
+
+<% @label = "Code" %>
+<% @field = @unit.code %>
+<%= render "application/show_row" %>
+
+<% @label = "Name" %>
+<% @field = @unit.name %>
+<%= render "application/show_row" %>
+
+<% @label = "Lot Format" %>
+<% @field = @unit.abbrev %>
+<%= render "application/show_row" %>
+
+<% @id = @unit.id %>
+<% @path = unit_path(@unit) %>

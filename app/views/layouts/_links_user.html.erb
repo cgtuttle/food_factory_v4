@@ -1,0 +1,20 @@
+<% if current_user_session %>
+  <% if current_user.admin %>
+    <li class="nav-item active">
+      <%= link_to current_company.name, new_company_session_path, class: "nav-link #{controller_name}-#{action_name}-path-link", id: "open-company-path-link" %>
+    </li>
+  <% else %>
+    <li class="nav-item"><a class="nav-link blank-path-link"><%= current_company.name %></a></li>
+  <% end %>
+
+  <li class="nav-item">
+    <%= link_to current_user.email, dashboard_path, class: "nav-link #{controller_name}-#{action_name}-path-link", id: "#{action_name}-dashboard-path-link" %>
+  </li>
+
+  <li class="nav-item">
+    <%= link_to "Logout", '#', data: { toggle: "modal", target: "#logout-confirm-modal" }, class: "nav-link", id: "#{action_name}-logout-path-link" %>
+  </li>
+<% end %>
+
+<!-- Modal -->
+<%= render "layouts/logout_confirm" %>

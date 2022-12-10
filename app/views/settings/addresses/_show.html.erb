@@ -1,0 +1,26 @@
+<% @label = "ID" %>
+<% @field = @address.id %>
+<%= render "application/show_row" %>
+
+<% @label = "Code" %>
+<% @field = @address.code %>
+<%= render "application/show_row" %>
+
+<% @label = "Name" %>
+<% @field = @address.name %>
+<%= render "application/show_row" %>
+
+<% @label = "Address" %>
+<% @field = @address.block_display %>
+<%= render "application/show_row" %>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title"><%= "#{@customer.name} -" if @customer %><%= " #{@address.name}" %></h5>
+    <p class="card-text"><%= @address.line_1 %><%= ", #{@address.line_2}"if @address.line_2.present? %></p>
+    <p class="card-text"><%= "#{@address.city} #{@address.state} #{@address.postal_code}"%></p>
+  </div>
+</div>
+
+<% @id = @address.id %>
+<% @path = address_path(@address) %>

@@ -1,0 +1,38 @@
+<% @label = "ID" %>
+<% @field = @transaction.id %>
+<%= render "application/show_row" %>
+
+<% @label = "Item Code" %>
+<% @field = link_to @transaction.item.code, item_transactions_path(@transaction.item) %>
+<%= render "application/show_row" %>
+
+<% @label = "Item" %>
+<% @field = @transaction.item.name %>
+<%= render "application/show_row" %>
+
+<% @label = "Lot Code" %>
+<% @field = link_to @transaction.item_lot.lot_code, item_lot_transactions_path(@transaction.item_lot) %>
+<%= render "application/show_row" %>
+
+<% @label = "Transaction Date" %>
+<% @field = @transaction.transaction_date %>
+<%= render "application/show_row" %>
+
+<% @label = "Transaction Type" %>
+<% @field = @transaction.transaction_type.name %>
+<%= render "application/show_row" %>
+
+<% @label = "Increase" %>
+<% @field = @transaction.base_qty_increase %>
+<%= render "application/show_row" %>
+
+<% @label = "Decrease" %>
+<% @field = @transaction.base_qty_decrease %>
+<%= render "application/show_row" %>
+
+<% @label = "Net Change" %>
+<% @field = @transaction.net_change %>
+<%= render "application/show_row" %>
+
+<% @id = @transaction.id %>
+<% @path = transaction_path(@transaction) %>

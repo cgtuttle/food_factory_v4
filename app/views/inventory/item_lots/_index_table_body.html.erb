@@ -1,0 +1,10 @@
+<% @lots.each do |lot| %>
+  <tr>
+    <th scope="row"><%= link_to lot.id, item_lot_path(lot) %></th>
+    <td><%= lot.lot_code %></td>
+    <td class="text-right">
+      <%= render "application/shared/link_edit", locals: { id: lot.id, path: item_lot_path(lot) } %>
+      <%= render "application/shared/link_delete", locals: { id: lot.id, path: item_lot_path(lot) } %>
+    </td>
+  </tr>
+<% end %>

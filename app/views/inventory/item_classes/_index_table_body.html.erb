@@ -1,0 +1,20 @@
+<% @item_classes.each do |item_class| %>
+  <tr class="table-row">
+    <td><%= link_to item_class.code, item_class_path(item_class.id) %></td>
+    <td><%= item_class.name %></td>
+    <td><%= item_class.lot_format %></td>
+    <td class="text-center">
+      <% if item_class.product %>
+        <i class="fas fa-check"></i>
+      <% end %>
+    </td>
+    <td class="text-right">
+      <div class="d-flex justify-content-around icon-group">
+        <div class="icon"></div>
+        <div class="icon"></div>
+        <%= render "application/shared/link_edit", locals: { id: item_class.id, path: item_class_path(item_class) } %>
+        <%= render "application/shared/link_delete", locals: { id: item_class.id, path: item_class_path(item_class) } %>
+      </div>
+    </td>
+  </tr>
+<% end %>

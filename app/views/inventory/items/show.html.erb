@@ -1,0 +1,30 @@
+<% @label = "ID" %>
+<% @field = @item.id %>
+<%= render "application/show_row" %>
+
+<% @label = "Code" %>
+<% @field = @item.code %>
+<%= render "application/show_row" %>
+
+<% @label = "Name" %>
+<% @field = @item.name %>
+<%= render "application/show_row" %>
+
+<hr/ class="list-header">
+
+<div class="row mb-4">
+  <div class="col">
+    <strong>Item Locations</strong>
+    
+    <% @item.locations.each do |location| %>
+      <div class="mt-2">          
+        <%= location.name %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<hr/ class="list-header">
+
+<% @id = @item.id %>
+<% @path = items_path(@item) %>

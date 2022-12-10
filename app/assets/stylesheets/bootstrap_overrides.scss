@@ -1,0 +1,344 @@
+@import 'colors';
+
+// SCSS Variables
+
+$container-margin: 1em;
+$sidebar-width: 16em;
+$navbar-height: 4em;
+$window-background-color: white;
+$sticky-window-height: 5em;
+$add-new-sticky-height: 2.5em;
+
+// Global
+
+html{
+  height: 100%;
+}
+
+body{
+  height: 100%;
+  margin: 0;
+  background-color: $window-background-color;
+}
+
+.full-height {
+  height: 100%;
+  overflow: auto;
+}
+
+// Navbar
+
+#navbar-inside { 
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: $navbar-height;
+  z-index: 3;
+}
+
+
+
+// Icons, buttons, and breadcrumbs
+
+.fa-icon {
+  color: $icon-bootstrap;
+}
+
+.fa-check-circle {
+  color: $icon-green;
+}
+
+.fa-times-circle {
+  color: $icon-red;
+}
+
+.fa-empty-circle {
+  color: $icon-bootstrap;
+}
+
+.fa-orange {
+  color: $icon-orange;
+}
+
+.fa-save, .fa-info-circle {
+  color: $icon-bootstrap;
+}
+
+.fa-list {
+   margin-top: 1em;
+}
+
+button.save {
+  border-style: none;
+  background-color: transparent;
+  padding:0
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  content: ">>"; // Breadcrumb separator
+}
+
+hr.list-header {
+  margin-bottom: 0.5rem;
+}
+
+.app-title {
+  margin-bottom: 0;
+}
+
+// Sidebar action
+
+#sidebar.out { // out (of page) means it is hidden
+  margin-left: -$sidebar-width;
+}
+
+#content-window.out {
+  margin-left: $container-margin;  
+}
+
+@media (max-width: 768px) {
+  #sidebar.out {
+    margin-left: -$sidebar-width;
+  }
+
+  #content-window.out {
+    margin-left: -$sidebar-width;
+  }
+
+  #sidebar {
+    margin-left: 0;
+  }
+
+  #sidebarCollapse span {
+    display: none;
+  }
+}
+
+
+// Nav elements
+
+.nav-link.nav-link-menu {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0.25em;
+  padding-right: 0;
+}
+
+a.nav-link {
+  color: white;
+  font-size: large;
+}
+
+a.nav-link:hover {
+  background-color: $sidebar-highlight-color;
+  color: white;
+}
+
+a.dropdown-item {
+  color: white; 
+}
+
+a.dropdown-item:hover {
+  background-color: $sidebar-highlight-color;
+  color: white;
+}
+
+#navbar-brand {
+  color: $food-green;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+}
+
+#navbar-brand-subscript {
+  color: $food-green;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: normal;
+}
+
+// Breadcrumbs
+
+.breadcrumb {
+  margin-right: 20px;
+}
+
+ol.breadcrumb.breadcrumb-sm {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-top: 0px;
+  margin-bottom: 0;
+  background-color: transparent;
+}
+
+li.breadcrumb-item > a,
+li.breadcrumb-item + .breadcrumb-item::before
+ {
+  color: #DADAFB;
+}
+
+li.breadcrumb-item.active.nav-item {
+  color: #9BB1F9;
+}
+
+
+// Forms
+
+input.form-control-sm.form-control-plaintext.add-new {
+  color: $text-color;
+}
+
+
+// Lists
+
+div.list-window {
+//  background-color: #FAF9F9;
+//  border-radius: 10px;
+//  margin-right: 15px;
+}
+
+hr.list-header {
+  border-top: 2px solid rgba(0, 0, 0, 0.2);
+  margin-top: 0.5rem;
+}
+
+// Welcome Page
+
+#container-welcome-background {
+  position: absolute;
+  height: 100vh;
+  background-color: #283328;
+}
+
+#container-welcome-image {
+  position: absolute;
+  top: 0;
+  //z-index: 1;
+  opacity: 1;
+  background-image: url("farm-food.jpg");
+  background-size: cover;
+  height: 100vh;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  margin-top: 0;
+}
+
+#container-welcome-foreground {
+  position: absolute;
+  //z-index: 2;
+  height: 100vh;
+  width: 100%;
+  background-color: #1C1C1C;
+  opacity: 0.7;
+}
+
+#container-welcome-content {
+  position: absolute;
+  //z-index: 3;
+  opacity: 1.0;
+}
+
+#welcome-main-message {
+  color: white;
+  padding: 15px;
+  margin-top: 75px;
+}
+
+.welcome-container {
+  position: absolute;
+}
+
+.welcome-page-col {
+  background-color: #505050;
+  opacity: 0.5;
+}
+
+.welcome-page-row {
+  overflow: hidden;
+}
+
+
+#open-company-path-link,
+#company-path-link,
+#portal-welcome-path-link,
+#welcome-logout-path-link, 
+#welcome-login-path-link, 
+#welcome-signup-path-link, 
+#welcome-dashboard-path-link,
+.welcome-panel-text,
+label.login-form-label {
+  color: rgb(228, 228, 228);
+}
+
+#security_user_session_email,
+#security_user_session_password {
+  background: #e0e0e0;
+  color:rgb(78, 78, 78)
+}
+
+.modal-content {
+  z-index: 2000;
+}
+
+// Dashboard page
+
+#dashboard-page-row {
+  height: 100vh;
+  // margin-top: -$navbar-margin;
+  // padding-top: $navbar-margin;
+}
+
+// Show pages
+
+.panel-body {
+  min-height: 8em;
+}
+
+.panel-heading {
+  color:  #777777;
+}
+
+.strip-panel{
+  display: flex;
+  margin-bottom: 1em;
+}
+
+.major-data-field {
+  display: flex;
+  justify-content: space-between;
+}
+
+.major-label {
+  flex: 1 1 1;
+  color:  #777777;
+}
+
+.major-value {
+}
+
+.data-field {
+  display: flex;
+  justify-content: space-between;
+}
+
+.data-label {
+  color:  #777777;  
+}
+
+.data-value {
+}
+
+.check-box {
+  height: calc(.75em + 0.5rem + 2px);
+}
+
+
+// Errors
+
+#error_explanation {
+  @extend .alert !optional;
+  @extend .alert-danger !optional;
+}
+
+#error_explanation h2 {
+  font-size: 16px;
+}

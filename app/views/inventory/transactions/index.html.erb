@@ -1,0 +1,17 @@
+<% content_for :context_title do %>  
+  <%= link_to_unless_current "Inventory Transactions", transactions_path %>
+<% end %>
+
+<% content_for :table do %>
+  <%= form_with url: transactions_path, model: @transaction, id: "inventory_transaction_table_form" do |form| %>
+    <table class="form-table" id="inventory-transactions-table">
+      <thead>
+        <%= render 'inventory/transactions/index/table_head' %>
+      </thead>
+      <tbody>
+        <%= render partial: 'inventory/transactions/index/form', locals: {f: form} %>
+        <%= render 'inventory/transactions/index/table_body'%>
+      </tbody>
+    </table>
+  <% end %>
+<% end %>

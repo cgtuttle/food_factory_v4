@@ -1,0 +1,17 @@
+<% content_for :breadcrumbs do %>
+  <%= render 'breadcrumbs' %>
+<% end %>
+
+<% content_for :context_title do %>  
+  <%= "#{@lot.item.code} - #{@lot.item.name}, Lot #{@lot.item.code}" %>
+<% end %>
+
+<% content_for :head do %>
+  <%= render 'index_table_head' %>
+<% end %>
+
+<% content_for :body do %>
+  <%= render 'index_table_body'%>
+<% end %>
+
+

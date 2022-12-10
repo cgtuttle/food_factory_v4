@@ -1,0 +1,3 @@
+module Inventory::ProductsHelper
+
+end

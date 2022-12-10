@@ -1,0 +1,2 @@
+id,email,password,password_confirmation,active,approved,confirmed,admin
+1,admin@factorysync.com,administrator,administrator,TRUE,TRUE,TRUE,TRUE

@@ -1,0 +1,23 @@
+<% content_for :breadcrumbs do %>
+  <%= render 'breadcrumbs' %>
+<% end %>
+
+<% content_for :context_title do %>  
+  <%= "#{@item.code} - #{@item.name}" %>
+<% end %>
+
+<% content_for :table do %>
+  <%= form_with url: item_transactions_path, model: <%= form_with(model: [@item, @transaction], url: locals[:path], local: true, role: 'form') do |f| %>@transaction, id: "inventory_transaction_table_form" do |form| %>
+    <table class="form-table" id="inventory-transactions-table">
+      <thead>
+        <%= render 'inventory/transactions/index/table_head' %>
+      </thead>
+      <tbody>
+        <%= render partial: 'inventory/item_transactions/form', locals: {f: form} %>
+        <%= render 'inventory/transactions/index/table_body'%>
+      </tbody>
+    </table>
+  <% end %>
+<% end %>
+
+

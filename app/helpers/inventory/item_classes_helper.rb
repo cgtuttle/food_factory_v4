@@ -1,0 +1,3 @@
+module Inventory::ItemClassesHelper
+
+end

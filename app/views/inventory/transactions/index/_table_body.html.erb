@@ -1,0 +1,29 @@
+<% @transactions.each do |transaction| %>
+  <tr class="table-row">
+    <% if @item.blank? and @lot.blank? %>
+      <td><%= link_to transaction.item.code_with_name, item_transactions_path(transaction.item) %></td>
+    <% end %>
+    <td class="date"><%= std_date(transaction.transaction_date) %></td>
+    <% if @lot.blank? %>
+      <td><%= link_to transaction.item_lot.lot_code, item_lot_transactions_path(transaction.item_lot.id) %></td>
+    <% end %>
+    <td class="date"><%= std_date(transaction.expire_date) %></td> 
+    <td><%= transaction.location.name %></td>
+    <td><%= transaction.transaction_type.code %></td>
+    <td class="text-right number"><%= qty_1(transaction.base_qty_increase) %></td>
+    <td class="text-right number"><%= qty_1(transaction.base_qty_decrease) %></td>
+    <td class="text-right number"><%= qty_1(transaction.net_change) %></td>
+    <td class="text-right number"><%= qty_1(transaction.item_lot_balance) %></td>
+    <td class="text-right number"><%= qty_1(transaction.item_balance) %></td>
+    <td class="text-right">
+      <span><%= link_to edit_transaction_path(transaction)  do %>
+        <i class="fas fa-edit mr-2" data-toggle="tooltip" data-placement="top" title="Edit"></i></a></span>
+      <% end %>
+    </td>
+    <td class="text-right">
+      <span><%= link_to transaction_path(transaction), method: "delete", data: {confirm: "Are you sure?"} do %>
+        <i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top" title="Delete" ></i></a></span>
+      <% end %>
+    </td>
+  </tr>
+<% end %>

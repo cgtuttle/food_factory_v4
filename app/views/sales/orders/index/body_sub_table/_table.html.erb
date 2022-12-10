@@ -1,0 +1,27 @@
+<table class="form-table subform-table">
+  <thead>
+    <tr class="subform-table-head">
+      <th scope="col" class="order-number">Line #</th>
+      <th scope="col" class="name">Item Code</th>
+      <th scope="col" class="name">Description</th>
+      <th scope="col" class="number qty">Qty</th>
+      <th scope="col" class="number dollar-2">PO Price</th>
+      <th scope="col" class="number dollar-2">Sys Price</th>
+      <th scope="col" class="number dollar-2">Total</th>
+      <th scope="col" class="icons"></th>
+    </tr>
+  </thead>
+  <tbody class="order-lines" id="order-lines">
+    <% order.lines.each do |line| %>
+      <tr>
+        <td><%= line.line_number %></td>
+        <td><%= line.item_id %></td>
+        <td><%= line.description %></td>
+        <td><%= line.po_qty %></td>
+        <td><%= line.po_price %></td>
+        <td></td>
+        <td><%= line.line_total %></td>
+      </tr>
+    <% end %>    
+  </tbody>
+</table>

@@ -1,0 +1,14 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+account_one: 
+  owner_id: customers(:customer_one).id
+  owner_type: "Sales::Customer"
+  name: customers(:customer_one).name
+  code: customers(:customer_one).code
+
+two: {}
+# column: value

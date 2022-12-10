@@ -1,0 +1,6 @@
+<div class="row form-group">
+  <%= f.label :ship_to_address_id, "Ship To", class: "col-xl-6 col-form-label" %>
+  <div class="col-xl-6">          
+    <%= f.collection_select :ship_to_address_id, Settings::Address.all, :id, :name, {prompt: true}, {class: "form-control", "order-ship-to"} %> 
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<%= content_tag :div, id: "inv_item_list", data: {items: Inventory::Item.all} do %><% end %>
+
+<%= form_with(model: @order, url: locals[:path], role: 'form') do |f| %>
+  <%= render 'layouts/alerts/errors', index: @order %>
+
+  <div class="row form-group">        
+    <%= f.label :order_number, "Order Number", class: "col-xl col-form-label h5" %>
+    <div class="col-xl">
+      <h5><%= f.text_field :order_number, class: "form-control", value: @order.order_number.present? ? @order.order_number : @order.next_order_number %></h5>
+    </div>
+    <%= f.label :customer_account_id, "Customer", class: "col-xl col-form-label" %>
+    <div class="col-xl">
+      <%= f.collection_select :customer_account_id, @cust_accounts, :id, :name, {prompt: true}, {class: "form-control", "order-customer"} %>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col border rounded bg-light ml-3 pt-3">
+      <%= render partial: "sales/orders/form/order_panel_1", locals: { f: f } %>
+    </div>
+    <div class="col border rounded bg-light mx-2 pt-3">
+      <%= render partial: "sales/orders/form/order_panel_2", locals: { f: f } %>
+    </div>
+    <div class="col border rounded bg-light mr-3 pt-3">
+      <%= render partial: "sales/orders/form/order_panel_3", locals: { f: f } %>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col" id="order-lines-col">
+      <%= render partial: "sales/orders/form/order_lines_table", locals: { form: f } %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col" id="add-order-line">
+      <%= link_to_add_association f, :lines, partial: "sales/orders/form/order_line", data: {"association-insertion-node" => "tbody.order-lines", "association-insertion-method" => "append"} do %>
+        <i class="fas fa-plus ml-2" data-toggle="tooltip" data-placement="top" title="New"></i></a>
+      <% end %>
+    </div>
+  </div>
+     
+  <div class="row mt-3">
+    <div class="col">
+      <div class="form-group">
+        <%= f.submit 'Submit', :class => 'btn btn-primary' %>
+        <%= link_to "Cancel", :back, :class => 'btn btn-secondary' %>
+      </div>
+    </div>
+  </div>
+
+<% end %>

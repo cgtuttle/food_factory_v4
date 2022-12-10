@@ -1,0 +1,28 @@
+.form-row-container {
+  display: flex;
+}
+
+.form-group {
+  margin-right: 0.5em;
+  flex: 1
+}
+
+.form-control.code {
+  min-width: 8em;
+  flex: 1
+}
+
+.form-control.name {
+  min-width: 32em;
+  flex: 1
+}
+
+.form-control.upc {
+  min-width: 8em;
+  flex: 1
+}
+
+.form-control.number {
+  min-width: 6em;
+  flex: 1
+}

@@ -1,0 +1,59 @@
+  <tr class="table-form-row">
+    <td></td>
+    <td scope="row" class="form-cell"><%= f.text_field :order_number, value: formatted_order_number(Sales::Order.next_order_number), class: "form-control form-control-sm" %></td>
+    <td class="td form-group form-cell"><%= f.date_field :order_date, value: Date.today, class: "form-control form-control-sm" %></td>
+    <td class="td form-group form-cell"><%= f.text_field :po_number, class: "form-control form-control-sm" %></td> 
+
+    <td class="td form-group form-cell"><%= f.collection_select :customer_account_id, @cust_accounts, :id, :name, {prompt: true}, { class: "form-control form-control-sm order-customer" } %></td>
+
+    <td class="td form-group form-cell"><%= f.collection_select :ship_to_address_id, Settings::Address.all, :id, :name, {prompt: true}, {class: "form-control form-control-sm order-ship-to"} %></td>
+
+    <td class="td form-group form-cell"><%= f.date_field :po_ship_date, class: "form-control form-control-sm" %></td>
+    <td class="td form-group form-cell"><%= f.date_field :po_pickup_date, class: "form-control form-control-sm" %></td>
+    <td class="text-center check"><i class="far fa-circle far-empty-circle" ></i></td>
+    <td class="text-center check"><i class="far fa-circle far-empty-circle" ></i></td>
+    <td class="text-center check"><i class="far fa-circle far-empty-circle" ></i></td>
+    <td class="text-center check"><i class="far fa-circle far-empty-circle" ></i></td>
+    <td class="text-center check"><i class="far fa-circle far-empty-circle" ></i></td>
+    <td></td>
+    <td class="text-right">
+      <div class="d-flex icon-group justify-content-around">
+        <span>
+          <%= link_to "", data: {toggle: "collapse", target: "#sales-order-lines-form"} do %>
+            <i class="fas fa-list-ol"></i></a>
+          <% end %>
+        </span>
+        <%= render "application/shared/link_save" %>
+        <div class="icon"></div>
+        <span class="text-center">
+          <%= link_to sales_orders_path do %>
+            <i class="fas fa-trash-alt" title="Clear">
+          <% end %></i>
+        </span>
+      </div>
+    </td>
+  </tr>
+
+  <tr class="collapse subform" id="sales-order-lines-form">
+    <td colspan="14" class="table-form form-cell">
+      <div class="card">
+        <div class="card-body table-subform">
+
+          <div class="row mt-2">
+            <div class="col" id="order-lines-col">
+              <%= render "sales/orders/index/form_sub_table/table", f: f %>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col" id="add-order-line">
+              <%= link_to_add_association f, :lines, partial: "sales/orders/index/form_sub_table/row", data: {"association-insertion-node" => "tbody.order-lines", "association-insertion-method" => "append"} do %>
+                <i class="fas fa-plus" data-toggle="tooltip" data-placement="top" title="New"></i></a>
+              <% end %>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </td>
+  </tr>

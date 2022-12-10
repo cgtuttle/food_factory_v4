@@ -1,0 +1,38 @@
+<%= form_with(model: @transaction_type, url: locals[:path], local: true, role: 'form') do |f| %>
+  <%= render 'layouts/alerts/errors', index: @location %>
+
+  <div class="form-group">
+    <%= f.label :code %>
+    <%= f.text_field :code, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, :class => "form-control" %>
+  </div>
+
+  <div class="form-group mt-4 mb-4">
+    <p>Default Direction</p>
+    <div class="form-check">
+      <%= f.radio_button "default_direction", "Increase", class: "form-check-input" %>
+      <%= f.label "Increase", class: "form-check-label" %>
+    </div>
+
+    <div class="form-check">
+      <%= f.radio_button "default_direction", "Decrease", class: "form-check-input" %>
+      <%= f.label "Decrease", class: "form-check-label" %>
+    </div>
+
+    <div class="form-check">
+      <%= f.radio_button "default_direction", "Either", class: "form-check-input" %>
+      <%= f.label "Either", class: "form-check-label" %>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <%= f.submit 'Submit', :class => 'btn btn-primary' %>
+    <%= link_to "Cancel", :back, :class => 'btn btn-secondary' %>
+  </div>
+
+<% end %>

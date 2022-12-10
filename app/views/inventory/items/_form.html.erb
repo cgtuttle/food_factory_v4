@@ -1,0 +1,58 @@
+<%= form_with(model: @item, url: locals[:path], local: true, role: 'form') do |f| %>
+  <%= render 'layouts/alerts/errors', index: @item %>
+
+  <div class="row">
+
+    <div class="col">  
+      <div class="form-group">
+        <%= f.label :code %>
+        <%= f.text_field :code, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, :class => "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :item_class %>
+        <%= f.collection_select :item_class_id, Inventory::ItemClass.all, :id, :code, {prompt: true}, {class: "form-control"} %> 
+      </div>
+
+      <div class="form-group">
+        <%= f.label :base_unit %>
+        <%= f.collection_select :base_unit_id, Settings::Unit.all, :id, :code, {prompt: false}, {class: "form-control"} %>
+      </div>
+    </div>
+
+    <div class="col-xl-1 d-none d-xl-block"></div>
+
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+
+          <h5 class="card-title">Locations</h5>
+          
+          <%= f.collection_check_boxes :location_ids, Inventory::Location.all, :id, :name do |b| %>            
+            <%= b.label(class: "form-check") do %>            
+              <%= b.check_box(class: "form-check-input") %>            
+              <%= b.object.name %>          
+            <% end %>          
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row mt-3">
+    <div class="col">
+      <div class="form-group">
+        <%= f.submit 'Submit', :class => 'btn btn-primary' %>
+        <%= link_to "Cancel", :back, :class => 'btn btn-secondary' %>
+      </div>
+    </div>
+  </div>
+
+<% end %>

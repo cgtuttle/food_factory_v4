@@ -1,0 +1,54 @@
+<% @label = "ID" %>
+<% @field = @product.id %>
+<%= render "application/show_row" %>
+
+<% @label = "Code" %>
+<% @field = @product.code %>
+<%= render "application/show_row" %>
+
+<% @label = "Name" %>
+<% @field = @product.name %>
+<%= render "application/show_row" %>
+
+<% @label = "Inv. Item" %>
+<% @field = @product.item.present? ? @product.item.code : nil  %>
+<%= render "application/show_row" %>
+
+<% @label = "GTIN-14" %>
+<% @field = @product.gtin_14 %>
+<%= render "application/show_row" %>
+
+<% @label = "UPC (GTIN-12)" %>
+<% @field = @product.unit_upc %>
+<%= render "application/show_row" %>
+
+<% @label = "Units/Cs" %>
+<% @field = @product.unit_qty %>
+<%= render "application/show_row" %>
+
+<% @label = "Units/Layer" %>
+<% @field = @product.layer_qty %>
+<%= render "application/show_row" %>
+
+<% @label = "Layers/Pallet" %>
+<% @field = @product.pallet_layers %>
+<%= render "application/show_row" %>
+
+<% @label = "Case Weight" %>
+<% @field = @product.weight %>
+<%= render "application/show_row" %>
+
+<% @label = "Height" %>
+<% @field = @product.height %>
+<%= render "application/show_row" %>
+
+<% @label = "Length" %>
+<% @field = @product.length %>
+<%= render "application/show_row" %>
+
+<% @label = "Width" %>
+<% @field = @product.width  %>
+<%= render "application/show_row" %>
+
+<% @id = @product.id %>
+<% @path = product_path(@product) %>

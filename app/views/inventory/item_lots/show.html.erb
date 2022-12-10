@@ -1,0 +1,22 @@
+<% @label = "ID" %>
+<% @field = @item_lot.id %>
+<%= render "application/show_row" %>
+
+<% @label = "Item ID" %>
+<% @field = @item_lot.item_id %>
+<%= render "application/show_row" %>
+
+<% @label = "Item Code" %>
+<% @field = @item_lot.item.code %>
+<%= render "application/show_row" %>
+
+<% @label = "Item Name" %>
+<% @field = @item_lot.item.name %>
+<%= render "application/show_row" %>
+
+<% @label = "Lot" %>
+<% @field = @item_lot.lot_code %>
+<%= render "application/show_row" %>
+
+<% @id = @item_lot.id %>
+<% @path = item_lot_path(@item_lot) %>

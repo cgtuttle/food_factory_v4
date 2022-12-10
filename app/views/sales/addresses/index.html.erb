@@ -1,0 +1,11 @@
+<% @paths = [{path: customers_path, label: "Customers"}] %>
+<% @current_page = "Addresses" %>
+
+<% content_for :context_title do %>  
+  <%= "#{@customer.code} - #{@customer.name}" %>
+<% end %>
+
+<% content_for :table do %>
+  <%= render 'index_table_head' %>
+  <%= render 'index_table_body'%>
+<% end %>

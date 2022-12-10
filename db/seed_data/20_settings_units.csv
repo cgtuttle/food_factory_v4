@@ -1,0 +1,15 @@
+code,name,abbrev,company_id
+EA,Each,ea,1
+LB,Pound,lb,1
+GRAM,Gram,g,1
+FLOZ,Fluid Ounce,floz,1
+GAL,Gallon,gal,1
+CS,Case,cs,1
+OZ,Ounce,oz,1
+EA,Each,ea,2
+LB,Pound,lb,2
+GRAM,Gram,g,2
+FLOZ,Fluid Ounce,floz,2
+GAL,Gallon,gal,2
+CS,Case,cs,2
+OZ,Ounce,oz,2

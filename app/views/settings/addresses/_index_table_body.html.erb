@@ -1,0 +1,12 @@
+<% @addresses.each do |address| %>
+  <tr>
+    <th scope="row"><%= address.id %></th>
+    <td><%= link_to address.code, address_path(address)  %></td>
+    <td><%= address.name %></td>
+    <td><%= address.line_display %></td>
+    <td class="text-right">
+      <%= render "application/shared/link_edit", locals: { id: address.id } %>
+      <%= render "application/shared/link_delete", locals: { id: address.id } %>
+    </td>
+  </tr>
+<% end %>

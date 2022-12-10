@@ -1,0 +1,15 @@
+<% content_for :table do %>
+  <%= form_with model: @order, id: "sales_orders_table_form" do |form| %>
+    <table class="form-table" id="orders-table">
+      <thead>
+        <%= render 'sales/orders/index/head' %>
+      </thead>
+      <tbody>
+        <%= render "sales/orders/index/form", f: form %>
+        <%= render 'sales/orders/index/body' %>
+      </tbody>
+    </table>
+  <% end %>
+<% end %>
+
+

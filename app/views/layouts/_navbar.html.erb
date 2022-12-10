@@ -1,0 +1,29 @@
+  <nav class="navbar navbar-expand-xl navbar-dark bg-dark position-sticky" id="navbar-inside">
+    
+    <%= link_to(root_path, {}, {class: "navbar-brand", id: "root-path-link"}) do %>
+      <h3 id="navbar-brand">F<sub id="navbar-brand-subscript">f</sub></h3>
+    <% end %>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active mr-3">
+          
+        </li>
+        <li class="nav-item active mr-3">
+          <%= link_to "Dashboard", dashboard_path, {class: "nav-link", id: "dashboard-path-link"} if controller_name != "dashboard" %>
+        </li>      
+      </ul>
+
+      <%= render 'layouts/nav_breadcrumbs' %>
+      
+      <div class="navbar-nav mr-auto"><%= render 'layouts/alerts/messages' %></div>
+      <ul class="navbar-nav">
+        <%= render 'layouts/links_user' %>
+      </ul>
+    </div>
+    
+  </nav>

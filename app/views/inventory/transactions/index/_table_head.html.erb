@@ -1,0 +1,19 @@
+<tr>
+  <% if @item.blank? and @lot.blank? %>
+    <th scope="col" class="label w-16">Item</th>
+  <% end %>
+  <th scope="col" class="label date">Trans Date</th>
+  <% if @lot.blank? %>
+    <th scope="col" class="label long-code">Lot Code</th>
+  <% end %>
+  <th scope="col" class="label date">Expires</th>
+  <th scope="col" class="label name">Location</th>
+  <th scope="col" class="label long-code">Type</th>
+  <th scope="col" class="label number">Increase</th>
+  <th scope="col" class="label number">Decrease</th>
+  <th scope="col" class="label number">Net Change</th>
+  <th scope="col" class="label number">Lot Balance</th>
+  <th scope="col" class="label number">Item Balance</th>
+  <th scope="col" class="label"></th>
+  <th scope="col" class="label icons"></th>
+</tr>

@@ -1,0 +1,29 @@
+<div id="page_container" class="container-fluid">
+  <div class="row">
+    <%= tag.div class: show_col_class do %>
+      <div class="row align-items-end">
+        <div class="col mb-2">
+          <%= render "/application/shared/sidebar_toggle" %>
+        </div>
+        <div class="col">
+          <% if action_name == "new" %>
+            <h3 class="text-center">New <%= page_title_singular %></h3>
+          <% else %>
+            <h3 class="text-center"><%= page_title_singular %> ID: <%= params[:id] %></h3>
+          <% end %>
+        </div>
+        <div class="col">
+          <h5 class="text-right">
+            <%= link_to "#{page_title_plural}", @index_path.present? ? @index_path : url_for(controller: controller_name, action: "index") %>
+          </h5>
+        </div>
+      </div>      
+      <div class="row">
+        <div class="col">
+          <%= render content %>
+        </div>
+      </div>
+    <% end %>
+    <div class="col"></div>
+  </div>
+</div>

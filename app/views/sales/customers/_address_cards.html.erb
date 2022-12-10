@@ -1,0 +1,10 @@
+<div class="card">
+  <div class="card-header">
+    <h6 class="card-title"><%= link_to address.name, customer_address_path(address) %></h6>
+  </div>
+  <div class="card-body">
+    <p class="card-text"><%= address.line_1 %></p>
+    <p class="card-text"><%= address.line_2 %></p>
+    <p class="card-text"><%= address.city %>  <%= address.state %> <%= address.postal_code %></p>
+  </div>
+</div>

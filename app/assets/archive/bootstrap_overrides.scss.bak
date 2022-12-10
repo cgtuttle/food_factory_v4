@@ -1,0 +1,378 @@
+// SCSS Variables
+
+$navbar-margin: 56px;
+$navbar-height: 56px;
+$container-margin: 1em;
+$sidebar-width: 16em;
+$border-blue: #E3DFFF;
+$table-row-color: #E2E3FF;
+$table-alt-row-color: #EEEEFF;
+$table-header-color: #7A89CB;
+$text-color: grey;
+$food-green: #67CE63;
+$sidebar-color: #7D8EA2;
+
+
+@import 'tables';
+@import 'sales_orders/tables';
+
+// Global
+
+html{
+  height: 100%;
+  overflow: hidden;
+}
+
+body{
+  height: 100%;
+  margin: 0;
+  background-color: white;
+  overflow: hidden;
+}
+
+
+.fa-check-circle {
+  color: #028F09;
+}
+
+.fa-times-circle {
+  color: #FF0000;
+}
+
+.fa-orange {
+  color: #FE9005;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  content: ">>"; // Breadcrumb separator
+}
+
+#body {
+  height: 100%;
+  overflow: hidden;
+}
+
+
+// Wrapper for sidebar and main content
+
+#app-window {
+  height: 100%;
+  width: 100%;
+  // padding-top: $navbar-height;
+  overflow: hidden;
+}
+
+.sidebar-toggle {
+  width: 2em;
+  margin-right: 3em;
+  flex-shrink: 0;
+}
+
+.title-row {
+  min-height: 0;
+  height: 3em;
+}
+
+hr.list-header {
+  margin-bottom: 0.5rem;
+}
+
+.app-title {
+  margin-bottom: 0;
+}
+
+// Content window
+
+#content-window {
+  padding-left: $container-margin;
+  padding-right: $container-margin;
+  overflow: auto;
+  flex: 1;
+}
+
+// Sidebar
+
+#sidebar {
+  min-width: $sidebar-width;
+  max-width: $sidebar-width;
+  transition: all 0.3s;
+  background-color: $sidebar-color;
+  padding-left: $container-margin;
+  overflow: hidden;
+  flex: 1;
+}
+
+#sidebar.out { // out (of page) means it is hidden
+  margin-left: -$sidebar-width;
+}
+
+@media (max-width: 768px) {
+    #sidebar.out {
+        margin-left: -$sidebar-width;
+    }
+    #sidebar {
+        margin-left: 0;
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
+}
+
+.nav-link.nav-link-menu {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+a.nav-link {
+  color: white;
+  font-size: large;
+}
+
+a.dropdown-item {
+  color: white; 
+}
+
+a.dropdown-item:hover {
+  background-color: #548A84;
+  color: white;
+}
+
+// Navbar
+
+#navbar-inside { 
+  height: $navbar-height;
+  // position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+}
+
+#navbar-brand {
+  color: $food-green;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+}
+
+#navbar-brand-subscript {
+  color: $food-green;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: normal;
+}
+
+// Breadcrumbs
+
+.breadcrumb {
+  margin-right: 20px;
+}
+
+ol.breadcrumb.breadcrumb-sm {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-top: 0px;
+  margin-bottom: 0;
+  background-color: transparent;
+}
+
+li.breadcrumb-item > a,
+li.breadcrumb-item + .breadcrumb-item::before
+ {
+  color: #DADAFB;
+}
+
+li.breadcrumb-item.active.nav-item {
+  color: #9BB1F9;
+}
+
+
+// Forms
+
+input.form-control-sm.form-control-plaintext.add-new {
+  color: $text-color;
+}
+
+// Tables
+
+table.form-table td.table-form {
+  padding-left: 2px;
+}
+
+// Lists
+
+div.list-window {
+//  background-color: #FAF9F9;
+//  border-radius: 10px;
+//  margin-right: 15px;
+}
+
+hr.list-header {
+  border-top: 2px solid rgba(0, 0, 0, 0.2);
+  margin-top: 0.5rem;
+}
+
+// Welcome Page
+
+#container-welcome-background {
+  position: absolute;
+  //z-index: auto;
+  height: 100vh;
+  background-color: #283328;
+}
+
+#container-welcome-image {
+  position: absolute;
+  top: 0;
+  //z-index: 1;
+  opacity: 1;
+  background-image: url("farm-food.jpg");
+  background-size: cover;
+  height: 100vh;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  margin-top: 0;
+}
+
+#container-welcome-foreground {
+  position: absolute;
+  //z-index: 2;
+  height: 100vh;
+  width: 100%;
+  background-color: #1C1C1C;
+  opacity: 0.5;
+}
+
+#container-welcome-content {
+  position: absolute;
+  //z-index: 3;
+  opacity: 1.0;
+}
+
+#welcome-main-message {
+  color: white;
+  padding: 15px;
+  margin-top: 75px;
+}
+
+#open-company-path-link,
+#company-path-link,
+#portal-welcome-path-link,
+#welcome-logout-path-link, 
+#welcome-login-path-link, 
+#welcome-signup-path-link, 
+#welcome-dashboard-path-link,
+label.login-form-label {
+  color: white;
+}
+
+#security_user_session_email,
+#security_user_session_password {
+  background: #A8A8A8;
+}
+
+.modal-content {
+  z-index: 2000;
+}
+
+// Dashboard page
+
+#dashboard-page-row {
+  height: 100vh;
+  margin-top: -$navbar-margin;
+  padding-top: $navbar-margin;
+}
+
+// Show pages
+
+.panel-body {
+  min-height: 8em;
+}
+
+.panel-heading {
+  color:  #777777;
+}
+
+.strip-panel{
+  display: flex;
+  margin-bottom: 1em;
+}
+
+.major-data-field {
+  display: flex;
+  justify-content: space-between;
+}
+
+.major-label {
+  flex: 1 1 1;
+  color:  #777777;
+}
+
+.major-value {
+}
+
+.data-field {
+  display: flex;
+  justify-content: space-between;
+}
+
+.data-label {
+  color:  #777777;  
+}
+
+.data-value {
+}
+
+.check-box {
+  height: calc(.75em + 0.5rem + 2px);
+}
+
+// Dot leaders for show tables
+
+div.show-table-row {
+display: flex;
+margin: 0 0 0.25em 0;
+}
+
+div.show-table-row .show-label {
+flex-shrink: 0;
+}
+
+div.show-table-row .dots {
+flex-shrink: 1;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: clip;
+}
+
+div.show-table-row .dots::after {
+font-weight: normal;
+content: ". . . . . . . . . . . . . . . . . . . .
+ . . . . . . . . . . . . . . . . . . . . . . . . . 
+ . . . . . . . . . . . . . . . . . . . . . . . . .
+ . . . . . . . . . . . . . . . . . . . . . . . . . 
+ . . . . . . . . . . . . . . . . . . . . . . . . .
+  . . . . . . . . . . . . . . . . . . . . . . ";
+}
+
+div.show-table-row .show-value {
+flex-shrink: 1;
+text-align: right;
+font-weight: bold;
+white-space: nowrap;
+}
+
+// Index Pages
+
+// Modal
+
+// Errors
+
+#error_explanation {
+  @extend .alert !optional;
+  @extend .alert-danger !optional;
+}
+
+#error_explanation h2 {
+  font-size: 16px;
+}

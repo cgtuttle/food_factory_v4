@@ -1,0 +1,55 @@
+// Wrapper for sidebar and main content
+
+#app-window {
+  width: 100%;
+}
+
+// Content window, not including sidebar
+
+#content-window {
+  margin-left: $sidebar-width;
+  padding-left: $container-margin; 
+  padding-right: $container-margin;
+  transition: all 0.3s;
+  width: 100%;
+}
+
+.window.sticky {
+  position: sticky;
+  top: $navbar-height;
+  background-color: white;
+  min-height: $sticky-window-height;
+  z-index: 3;
+  padding-bottom: .5em;
+}
+
+.app-title {
+}
+
+// Sidebar
+
+#sidebar {
+  min-width: $sidebar-width;
+  max-width: $sidebar-width;
+  transition: all 0.3s;
+  background-color: $sidebar-color;
+  padding-top: 56px;
+  padding-left: $container-margin;
+  overflow: hidden;
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  // flex: 1;
+}
+
+.sidebar-toggle {
+  width: 2em;
+  margin-right: 3em;
+  flex-shrink: 0;
+}
+
+button.btn-link {
+  padding-left: 0;
+  padding-top: 1em;
+}

@@ -1,0 +1,18 @@
+<nav class="navbar navbar-light navbar-expand-lg" id="navbar-main">
+  <ul class="navbar-nav ml-auto">
+  	<% if current_user_session %>
+  	  
+  	  <li class="nav-item">
+  	    <%= link_to "Dashboard", dashboard_path, class: "nav-link #{controller_name}-#{action_name}-path-link", id: "#{action_name}-dashboard-path-link" %>
+  	  </li>
+
+  	  <li class="nav-item">
+  	    <%= link_to "Logout", '#', data: { toggle: "modal", target: "#logout-confirm-modal" }, class: "nav-link", id: "#{action_name}-logout-path-link" %>
+  	  </li>
+
+  	<% end %>
+	 </ul>
+</nav>
+
+<!-- Modal -->
+<%= render "layouts/logout_confirm" %>

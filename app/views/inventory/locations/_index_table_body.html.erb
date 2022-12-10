@@ -1,0 +1,10 @@
+<% @locations.each do |location| %>
+  <tr class="table-row">
+    <td><%= link_to location.code, location_path(location.id) %></td>
+    <td><%= location.name %></td>
+    <td class="text-right">
+      <%= render "application/shared/link_edit", locals: { id: location.id, path: location_path(location) } %>
+      <%= render "application/shared/link_delete", locals: { id: location.id, path: location_path(location) } %>
+    </td>
+  </tr>
+<% end %>

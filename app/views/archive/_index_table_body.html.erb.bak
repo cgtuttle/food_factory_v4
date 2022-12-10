@@ -1,0 +1,30 @@
+
+
+<% @orders.each do |order| %>
+  <tr>
+    <th scope="row"><%= link_to order.order_number, sales_order_path(order) %></th>
+    <td><%= std_date(order.order_date) %></td>
+    <td><%= order.po_number %></td>   
+    <td><%= order.customer_account.name %></td>
+    <td><%= order.ship_to_address.present? ? order.ship_to_address.name : nil %></td>
+    <td><%= std_date(order.po_ship_date) %></td>
+    <td><%= std_date(order.po_pickup_date) %></td>
+    <td class="text-center check"><%= tag.i class: ["fas", order.acknowledged ? "fa-check-circle" : "fa-times-circle"] %></td>
+    <td class="text-center check">
+    <% if order.inventory_status == "complete" %>
+      <%= tag.i class: ["fas", "fa-check-circle"] %>
+    <% elsif order.inventory_status == "incomplete" %>
+      <%= tag.i class: ["fas", "fa-times-circle"] %>
+    <% else %>
+      <%= tag.i class: ["fas", "fa-minus-circle", "fa-orange"] %>
+    <% end %>
+    </td>
+    <td class="text-center check"><%= tag.i class: ["fas", order.dc_notified ? "fa-check-circle" : "fa-times-circle"] %></td>
+    <td class="text-center check"><%= tag.i class: ["fas", order.shipped ? "fa-check-circle" : "fa-times-circle"] %></td>
+    <td class="text-center check"><%= tag.i class: ["fas", order.invoiced ? "fa-check-circle" : "fa-times-circle"] %></td>
+    <td class="text-right">
+      <%= render "application/shared/link_edit", locals: { id: order.id, path: sales_order_path(order) } %>
+      <%= render "application/shared/link_delete", locals: { id: order.id, path: sales_order_path(order) } %>
+    </td>
+  </tr>
+<% end %>

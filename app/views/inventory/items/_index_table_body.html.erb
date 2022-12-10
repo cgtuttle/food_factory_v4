@@ -1,0 +1,15 @@
+<% @items.each do |item| %>
+  <tr class="table-row">
+    <td><%= link_to item.code, item_path(item.id) %></td>
+    <td><%= item.name %></td>
+    <td><%= item.inventory_class.name %></td>
+    <td><%= item.base_unit.code %></td>
+    <td><%= link_to "Lot control", item_lots_path(item.id) %></td>
+    <td><%= link_to "Products", item_products_path(item.id) %></td>
+    <td><%= link_to "Transactions", item_transactions_path(item.id) %></td>
+    <td class="text-right">
+      <%= render "application/shared/link_edit", locals: { id: item.id, path: item_path(item) } %>
+      <%= render "application/shared/link_delete", locals: { id: item.id, path: item_path(item) } %>
+    </td>
+  </tr>
+<% end %>

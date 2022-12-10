@@ -1,0 +1,14 @@
+<% @label = "ID" %>
+<% @field = @transaction_type.id %>
+<%= render "application/show_row" %>
+
+<% @label = "Code" %>
+<% @field = @transaction_type.code %>
+<%= render "application/show_row" %>
+
+<% @label = "Default Direction" %>
+<% @field = @transaction_type.name %>
+<%= render "application/show_row" %>
+
+<% @id = @transaction_type.id %>
+<% @path = transaction_type_path(@transaction_type) %>

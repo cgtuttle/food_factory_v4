@@ -1,0 +1,25 @@
+application.html.erb
+    layouts/_navbar.html.erb
+        layouts/alerts/_messages.html.erb
+        layouts/_links_user.html.erb
+
+    layouts/_logout_confirm.html.erb
+
+    layouts/_app_container.html.erb
+        layouts/_accordion_menu.html.erb
+        application/shared/_sidebar_toggle.html.erb
+
+        {yield}
+            portal/welcome.html.erb
+
+            application/new.html.erb
+                <controller>/_new.html.erb
+                <controller>/_from.html.erb
+                layouts/alerts/_errors.html.erb
+
+            application/show.html.erb
+                <controller>/_show.html.erb
+
+            application/index.html.erb
+                <controller>/_index_table_head.html.erb
+                <controller>/_index_table_body.html.erb

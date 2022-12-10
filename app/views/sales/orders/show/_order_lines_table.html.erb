@@ -1,0 +1,39 @@
+
+<table class="sub-table">
+  <thead>
+    <tr class="subform-table-head">
+      <th scope="col" class="label id">Line #</th>
+      <th scope="col" class="label code">Item ID</th>
+      <th scope="col" class="label name">Description</th>
+      <th scope="col" class="label number w-8">Qty</th>
+      <th scope="col" class="label number w-8">PO Price</th>
+      <th scope="col" class="label number w-8">Sys Price</th>
+      <th scope="col" class="label number w-10">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @total = 0 %>
+    <% order.lines.order(:line_number).each do |line| %>
+      <tr>
+        <th scope="row"><%= line.line_number %></th>
+        <td><%= line.item_id %></td>
+        <td><%= line.description %></td>
+        <td class="text-right"><%= line.po_qty %></td>
+        <td class="text-right"><%= number_2(line.po_price) %></td>
+        <td class="text-right"></td>
+        <td class="text-right"><%= number_2(nil_to_zero(line.po_qty) * nil_to_zero(line.po_price)) %></td>
+        <% @total = @total + (nil_to_zero(line.po_qty) * nil_to_zero(line.po_price)) %>
+      </tr>
+    <% end %>
+    <tr>
+      <th scope="row">Subtotal</th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td class="text-right"><%= money_2(@total) %></td>
+    </tr>
+  </tbody>
+</table>
+

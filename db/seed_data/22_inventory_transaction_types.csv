@@ -1,0 +1,11 @@
+code,name,default_direction,company_id
+ADJ,Adjustment,increase,1
+RCPT,Receipt,increase,1
+SHIP,Shipment,decrease,1
+PHYS,Physical Count,none,1
+BEGINV,Beginning Inventory,increase,1
+ADJ,Adjustment,increase,2
+RCPT,Receipt,increase,2
+SHIP,Shipment,decrease,2
+PHYS,Physical Count,none,2
+BEGINV,Beginning Inventory,increase,2

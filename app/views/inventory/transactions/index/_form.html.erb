@@ -1,0 +1,51 @@
+<% date_value = default_date(f.object.present? ? f.object.transaction_date : Date.today) %>
+
+<tr class="table-form-row">
+
+  <th scope="row" class="form-cell"><%= f.collection_select :item_id, Inventory::Item.all, :id, :code_with_name, {prompt: true}, {class: "form-control form-control-sm", id: "inv-trans-form-item-select"} %></th>
+
+  <th class="form-group form-cell"><%= f.date_field :transaction_date, class: "form-control form-control-sm", id: "inv-transaction-date", value: "#{date_value}" %></th>
+
+  <th><%= f.collection_select :item_lot_id, Inventory::ItemLot.all, :id, :lot_code, {prompt: "..."}, {class: "form-control form-control-sm", id: "inv-trans-form-item-lot-select"} %></th>
+  <th><%= text_field_tag  "expires", "", readonly: true, class: "form-control-sm form-control text-right", id: "inv-trans-form-expires" %></th>
+  <th><%= f.collection_select :location_id, Inventory::Location.all, :id, :name, {prompt: "..."}, {class: "form-control form-control-sm", id: "transaction-location"} %></th>
+  <th><%= f.collection_select :transaction_type_id, Inventory::TransactionType.all, :id, :code, {prompt: "..."}, {class: "form-control form-control-sm", id: "inv-trans-form-type"} %></th>
+  <th><%= f.text_field :base_qty_increase, class: "form-control form-control-sm text-right inv-trans-form-change", id: "inv-trans-form-incr" %></th>
+  <th><%= f.text_field :base_qty_decrease, class: "form-control form-control-sm text-right inv-trans-form-change", id: "inv-trans-form-decr" %></th>
+  <th><%= text_field_tag  "net_change", "", readonly: true, class: "form-control-sm form-control text-right", id: "inv-trans-form-net-change" %></th>
+  <th><%= text_field_tag  "net_change", "", readonly: true, class: "form-control-sm form-control text-right", id: "inv-trans-form-lot-balance" %></th>
+  <th><%= text_field_tag  "net_change", "", readonly: true, class: "form-control-sm form-control text-right", id: "inv-trans-form-item-balance" %></th>
+
+  <th></th>
+
+  <th class="text-right form-cell">
+    <div class="d-flex icon-group justify-content-between">
+      <%= render "application/shared/link_save" %>
+      <div class="icon"></div>
+      <div class="icon"></div>
+      <div class="icon">
+        <%= link_to transactions_path do %>
+          <i class="fas fa-trash-alt" title="Clear">
+        <% end %></i>
+      </div>
+    </div>
+  </th>
+
+</tr>
+
+<tr class="collapse subform" id="inv-trans-index-subform">
+  <td colspan="2" class="table-form form-cell">
+    <div class="card">
+      <div class="card-body table-subform">
+        <div class="form-group item-lot-text-group">
+          <%= f.label :new_item_lot_code, "Lot code", class: "form-label" %>
+          <%= f.text_field :new_item_lot_code, class: "form-control fomr-control-sm", id: "new-item-lot-text" %>
+        </div>
+        <div class="form-group item-lot-text-group">
+          <%= f.label :expire_date, "Expiration Date", class: "form-label" %>
+          <%= f.date_field :expire_date, class: "form-control fomr-control-sm", id: "new-item-expire_date" %>
+        </div>
+      </div>
+    </div>
+  </td>
+</tr>

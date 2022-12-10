@@ -1,0 +1,3 @@
+module Purchases::VendorsHelper
+
+end

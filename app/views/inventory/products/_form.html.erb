@@ -1,0 +1,101 @@
+
+<%= form_with(model: @product, url: locals[:path], local: true, role: 'form') do |f| %>
+  <%= render 'layouts/alerts/errors', index: @product %>
+
+  <div class="row">
+    <div class="col-xl-6">
+      <div class="form-row-container">
+        <div class="form-group">
+          <%= f.label :code %>
+          <%= f.text_field :code, class: "form-control code" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "form-control name" %>
+        </div>
+      </div>
+
+      <div class="form-row-container">
+        <% if not @item.present? %>
+          <div class="form-group">
+            <%= f.label :item_id, "Associated Inv. Item" %>
+            <%= f.collection_select :item_id, Inventory::Item.all, :id, :code, {prompt: true}, {class: "form-control name"} %> 
+          </div>
+        <% end %>
+      </div>
+
+      <div class="form-row-container">
+        <div class="form-group">
+          <%= f.label :gtin_14, "GTIN-14" %>
+          <%= f.text_field :gtin_14, class: "form-control upc" %> 
+        </div>
+
+        <div class="form-group">
+          <%= f.label :unit_upc, "UPC" %>
+          <%= f.text_field :unit_upc, class: "form-control upc" %>
+        </div>
+      </div>
+
+      <div class="form-row-container">
+        <div class="form-group">
+          <%= f.label :unit_qty, "Units per Case" %>
+          <%= f.text_field :unit_qty, class: "form-control number" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :layer_qty, "Layer Qty" %>
+          <%= f.text_field :layer_qty, class: "form-control number" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :pallet_layers, "Pallet Layers" %>
+          <%= f.text_field :pallet_layers, class: "form-control number" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :weight, "Case Weight" %>
+          <%= f.text_field :weight, class: "form-control number" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :dim_unit_id, "Weight UOM" %>
+          <%= f.collection_select :dim_unit_id, Settings::Unit.where(unit_type: "weight"), :id, :abbrev, {prompt: true}, {class: "form-control code"} %>
+        </div>
+      </div>
+
+      <div class="form-row-container">
+        <div class="form-group">
+          <%= f.label :height, "Height" %>
+          <%= f.text_field :height, class: "form-control number" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :length, "Length" %>
+          <%= f.text_field :length, class: "form-control number" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :width, "Width" %>
+          <%= f.text_field :width, class: "form-control number" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :dim_unit_id, "Dim UOM" %>
+          <%= f.collection_select :dim_unit_id, Settings::Unit.where(unit_type: "length"), :id, :abbrev, {prompt: true}, {class: "form-control code"} %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col">
+      <div class="form-group">
+        <%= f.submit 'Submit', :class => 'btn btn-primary' %>
+        <%= link_to "Cancel", :back, :class => 'btn btn-secondary' %>
+      </div>
+    </div>
+  </div>
+
+<% end %>

@@ -1,0 +1,2 @@
+<li class="breadcrumb-item"><%= link_to @customer.name, @customers_path %></li>
+<li class="breadcrumb-item active" aria-current="page">Addresses</li>

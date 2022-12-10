@@ -1,0 +1,27 @@
+<% content_for :content do %>
+  <div class="row mt-1 mb-2">
+    <div class="col-3">
+    </div>
+    <div class="col">
+      <h6 class="text-right"><%= link_to controller: controller_name, action: "new" do %>
+        <i class="fas fa-plus-circle mr-2" data-toggle="tooltip" data-placement="top" title="Add new" ></i></a></h6>   
+      <% end %>      
+    </div>
+  </div>      
+  <div class="row">
+    <div class="col">          
+      <div class="table-responsive">      
+        <table class="table table-sm">
+          <thead class="thead-light">
+            <%= yield :head %>
+          </thead>
+          <tbody>%>
+            <%= yield :body %>              
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= render template: "layouts/app_container" %>

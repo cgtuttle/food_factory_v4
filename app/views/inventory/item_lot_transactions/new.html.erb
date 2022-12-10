@@ -1,0 +1,4 @@
+<h5 class="mb-3">Item ID: <strong><%= @item.code %> - <%= @item.name %></strong></h5>
+<h5 class="mb-3">Lot Code: <strong><%= @lot.lot_code %></strong></h5>
+
+<%= render 'form', locals: { path: item_lot_transactions_path, id: @lot.id} %>

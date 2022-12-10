@@ -1,0 +1,8 @@
+<% content_for :content do %>
+  <div class="add-new sticky">
+    <%= render 'application/shared/link_new' %>
+  </div>
+  <%= yield :table %>
+<% end %>
+
+<%= render template: "layouts/app_container" %>

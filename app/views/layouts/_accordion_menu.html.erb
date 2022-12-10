@@ -1,0 +1,60 @@
+<ul class="list-unstyled components mt-3"> 
+  <div class="accordion" id="accordion-menu">
+
+    <li class="nav-item mt-2" id="menu-item-inventory">
+      <%= link_to '#', class: "accordion nav-link nav-link-menu collapsed", data: { toggle:"collapse", target: "#collapse-inventory"} do %>
+        Inventory
+      <% end %>
+      <div class="collapse" id="collapse-inventory" data-parent="#accordion-menu">   
+        <%= link_to "Item Classes", :item_classes, class: "dropdown-item" %>
+        <%= link_to "Items", :items, class: "dropdown-item" %>
+        <%= link_to "Locations", :locations, class: "dropdown-item" %>  
+        <%= link_to "Products", :products, class: "dropdown-item" %> 
+        <%= link_to "Transactions", :transactions, class: "dropdown-item" %>
+        <%= link_to "Transaction Types", :transaction_types, class: "dropdown-item" %>
+      </div>
+    </li>
+
+    <li class="nav-item mt-2" id="menu-item-purchases">
+      <%= link_to '#', class: "accordion nav-link nav-link-menu collapsed", data: { toggle:"collapse", target: ".collapse-purchases"} do %>
+        Purchases
+      <% end %>
+      <div class="collapse collapse-purchases" id="collapse-purchase-orders" data-parent="#accordion-menu">
+        <%= link_to "Purchase Orders", :purchase_orders, class: "dropdown-item" %>   
+        <%= link_to "Vendors", :vendors, class: "dropdown-item" %>      
+      </div>
+    </li>
+
+    <li class="nav-item mt-2" id="menu-item-sales">
+      <%= link_to '#', class: "accordion nav-link nav-link-menu collapsed", data: { toggle:"collapse", target: "#collapse-sales"} do %>
+        Sales
+      <% end %>
+      <div class="collapse" id="collapse-sales" data-parent="#accordion-menu">
+        <%= link_to "Customers", :customers, class: "dropdown-item" %>      
+        <%= link_to "Sales Orders", :sales_orders, class: "dropdown-item" %>
+      </div>
+    </li>
+
+    <% if policy(:security).show? %>
+      <li class="nav-item mt-2" id="menu-item-security">
+        <%= link_to '#', class: "accordion nav-link nav-link-menu collapsed", data: { toggle:"collapse", target: "#collapse-security"} do %>
+          Security
+        <% end %>
+        <div class="collapse" id="collapse-security" data-parent="#accordion-menu">      
+          <%= link_to "Users", :users, class: "dropdown-item" %>
+          <%= link_to "Companies", :companies, class: "dropdown-item" %>
+        </div>
+      </li>
+    <% end %>
+
+    <li class="nav-item mt-2" id="menu-item-settings">
+      <%= link_to '#', class: "accordion nav-link nav-link-menu collapsed", data: {  toggle:"collapse", target: "#collapse-settings"} do %>
+        Settings
+      <% end %>
+      <div class="collapse" id="collapse-settings" data-parent="#accordion-menu">
+        <%= link_to "Units", :units, class: "dropdown-item" %>
+        <%= link_to "Addresses", :addresses, class: "dropdown-item" %>
+      </div>
+    </li>
+  </div>
+</ul>

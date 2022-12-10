@@ -1,0 +1,16 @@
+<% @addresses.each do |address| %>
+  <tr>         
+    <td scope="row"><%= address.id %></td>
+    <td><%= link_to address.code, customer_address_path(@customer, address) %></td>
+    <td><%= address.name %></td>
+    <td><%= address.line_1 %></td>
+    <td><%= address.line_2 %></td>    
+    <td><%= address.city %></td>
+    <td><%= address.state %></td>
+    <td><%= address.postal_code %></td>
+    <td class="text-right">
+      <%= render "application/shared/link_edit", locals: { id: address.id, controller: "settings/addresses" } %>
+      <%= render "application/shared/link_delete", locals: { id: address.id, path: address_path(@customer) } %>
+    </td>
+  </tr>
+<% end %>

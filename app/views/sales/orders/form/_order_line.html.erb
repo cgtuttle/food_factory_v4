@@ -1,0 +1,15 @@
+
+<tr class='nested-fields'>
+  <th scope="row" class="field"><%= line.text_field :line_number, class: "form-control form-control-sm" %></th>
+  <td><%= line.collection_select :item_id, Inventory::Item.all, :id, :code, {prompt: true}, {class: "form-control form-control-sm sales-order-item"} %></td>
+  <td><%= line.text_field :description, class: "form-control form-control-sm order-line-item-description" %></td>
+  <td><%= line.text_field :po_qty, class: "form-control form-control-sm order-line-po-qty text-right" %></td>
+  <td><%= line.text_field :po_price, class: "form-control form-control-sm order-line-po-price text-right", value: number_2(line.object.po_price) %></td>
+  <td></td>
+  <td><%= line.text_field :line_total, class: "form-control form-control-sm order-line-total text-right", value: number_2(line.object.line_total) %></td>
+  <td>
+    <%= link_to_remove_association form do %>
+      <div class="text-right"><i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top" title="Delete" ></i></div>
+    <% end %>
+  </td>
+</tr>

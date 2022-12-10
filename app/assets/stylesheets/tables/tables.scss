@@ -1,0 +1,139 @@
+// Tables
+
+.add-new.sticky{
+  position: sticky;
+  top: $navbar-height + $sticky-window-height; //+ 0.5em + 1/16*1em;
+  z-index: 3;
+  min-height: $add-new_sticky-height;
+  background-color: white;
+}
+
+table {
+  width: auto;
+  margin-bottom: 1em;
+}
+
+tr.index-row.even {
+  background-color: $table-row-color;
+}
+
+tr.index-row.odd {
+  background-color: $table-alt-row-color;
+}
+
+tr.table-row:nth-child(even) {
+  background-color: $table-row-color;
+}
+
+tr.table-row:nth-child(odd) {
+  background-color: $table-alt-row-color;  
+}
+
+// Forms embedded in a table row
+
+table.form-table th.label {
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipses;
+  text-align: center;
+  background-color: $table-header-color;
+  color: white;
+  position: sticky;
+  top: $navbar-height + $sticky-window-height + $add-new_sticky-height;
+  z-index: 3;
+  height: 2em;
+}
+
+th.form-cell {
+  position: sticky;
+  top: $navbar-height + $sticky-window-height + $add-new_sticky-height + 2em;
+  z-index: 3;
+  background-color: white;
+}
+
+th input.form-control-plaintext {
+  padding-right: 0.6em;
+}
+
+table.form-table tr.subform-table-head th {
+  background-color: $subform-table-header-color;
+  color: white;
+  text-align: center;
+}
+
+table.form-table tr.nested-fields td:nth-child(even) {
+  background-color: $subform-table-row-color;
+}
+
+table.form-table tr.nested-fields td:nth-child(odd) {
+  background-color: $subform-table-alt-row-color;
+}
+
+table.form-table td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipses;
+  padding-left: 5px;
+}
+
+table.form-table td.form-cell {
+  padding-left: 2px;
+}
+
+table.form-table td.table-form {
+  padding-left: 2px;
+}
+
+div.table-subform {
+  background-color: $subform-card-color;
+  padding-top: 0;
+  padding-bottom: 0.5em;
+}
+
+table.sub-table tr th.label {
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipses;
+  text-align: center;
+  background-color: $subform-table-header-color;
+  color: white;
+  height: 2em;  
+}
+
+span i {
+  padding-left: .25em;
+  padding-right: .25em;
+  min-width: 2em;
+}
+
+.icon {
+  padding-left: .25em;
+  padding-right: .25em;
+  min-width: 2em;  
+}
+
+.form-control {
+  padding-left: 2px;
+}
+
+.d-flex.icon-group {
+  min-height: 0;
+  height: auto;
+}
+
+th.form-group.form-check.form-cell {
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 1em;
+  margin: 0;
+}
+
+div.check-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input.form-check-input.cell-check-input {
+  margin: 0;
+}

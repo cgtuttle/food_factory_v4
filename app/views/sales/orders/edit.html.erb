@@ -1,0 +1,8 @@
+<% @width_class = "col-12" %>
+<%= content_tag :div, id: "order", data: {id: @order.id} do %><% end %>
+
+<div class="row my-3">
+  <div class="col">
+    <%= render 'form', locals: { path: sales_order_path(@order)} %>
+  </div>
+</div>

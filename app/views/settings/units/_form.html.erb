@@ -1,0 +1,25 @@
+<%#<%= form_with scope: "unit", url: units_path, role: 'form' do |f| %>
+<%= form_with(model: @unit, url: locals[:path], local: true, role: 'form') do |f| %>
+  <%= render 'layouts/alerts/errors', index: @unit %>
+
+  <div class="form-group">
+    <%= f.label :code %>
+    <%= f.text_field :code, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :abbrev %>
+    <%= f.text_field :abbrev, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit 'Submit', :class => 'btn btn-primary' %>
+    <%= link_to "Cancel", :back, :class => 'btn btn-secondary' %>
+  </div>
+
+<% end %>

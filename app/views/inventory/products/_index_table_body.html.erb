@@ -1,0 +1,19 @@
+<% @products.each do |product| %>
+  <tr class="table-row">
+    
+    <td><%= link_to product.code, product_path(product.id) %></td>
+    <td><%= product.name %></td>
+    <td><%= link_to product.item.name, edit_item_path(product.item.id) if product.item.present? %></td>
+    <td class="text-center"><%= product.gtin_14 %></td>
+    <td class="text-center"><%= product.unit_upc %></td>
+    <td class="text-center"><%= product.unit_qty %></td>
+    <td class="text-right">
+      <div class="d-flex icon-group justify-content-between">
+        <div class="icon"></div>
+        <div class="icon"></div>
+        <%= render "application/shared/link_edit", locals: { id: product.id, path: product_path(product) } %>
+        <%= render "application/shared/link_delete", locals: { id: product.id, path: product_path(product) } %>
+      </div>
+    </td>
+  </tr>
+<% end %>

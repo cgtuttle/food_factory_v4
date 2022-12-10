@@ -1,0 +1,13 @@
+<div class="dropdown-menu">
+  <div class="dropdown-page px-1">
+    <%= form_with model: Settings::Filter.new, url: new_filter_path  do |f| %>
+      <%= link_to "#" do %>
+        <i class="fas fa-sort-alpha-down mr-2 sort-ascending" id="filter-sort-asc" data-toggle="tooltip" data-placement="top" data-field="code" title="Sort Ascending"></i>
+      <% end %>
+      <%= link_to "#" do %>
+        <i class="fas fa-sort-alpha-up mr-2 sort-descending" id="filter-sort-desc" data-toggle="tooltip" data-placement="top" title="Sort Descending"></i>
+      <% end %>
+      <%= select_tag :new_item_id, options_for_select(Inventory::Item.all.order(:name).collect{|x| [x.name, x.id]}), prompt: "Item Search", class: "form-control form-control-sm column-filter", id: "filter-search-select" %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<% @users.each do |user| %>
+  <tr>
+    <th scope="row"><%= user.id %></th>
+    <td><%= user.email %></td>
+    <% if current_user.admin? %>
+      <td>
+        <% if user.admin? %>
+          <div class="text-center"><i class="fas fa-check"></i></div>
+        <% end %>
+      </td>
+    <% end %>
+    <td><%= link_to "Edit", edit_user_path(user) %></td>
+  </tr>
+<% end %>

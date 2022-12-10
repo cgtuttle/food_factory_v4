@@ -1,0 +1,20 @@
+<% @customers.each_with_index do |customer, i| %>
+  <%= tag.tr class: ["index-row", "#{i.even? ? "even": "odd"}" ] do %>
+    <td scope="row"><%= customer.id %></th>
+    <td class="order-number"><%= link_to customer.account.code, customer_path(customer.id) %></td>
+    <td class="name"><%= customer.account.name %></td>
+    <td></td>
+    <td class="code"><%= link_to "Orders", customer_orders_path(customer) %></td>
+    <td class="code"><%= link_to "Addresses", customer_addresses_path(customer) %></td>
+    <td class="text-right">
+      <div class="d-flex justify-content-around icon-group">
+        <div class="mr-3">
+        </div>
+        <div class="mr-3">
+        </div>
+        <%= render "application/shared/link_edit", locals: { id: customer.id, path: customer_path(customer) } %>
+        <%= render "application/shared/link_delete", locals: { id: customer.id, path: customer_path(customer) } %>
+      </div>
+    </td>
+  <% end %>
+<% end %>

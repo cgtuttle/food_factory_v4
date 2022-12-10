@@ -1,0 +1,59 @@
+
+  <% @orders.each_with_index do |order, i| %>
+    <%= tag.tr class: ["index-row", "#{i.even? ? "even": "odd"}" ] do %>
+      <td scope="row" class="icon">
+        <span class="text-center">
+          <%= tag.i class:"fas fa-info-circle", data: {toggle: "popover", content: order_info(order), title: "Order"} %>
+        </span>
+      </td>
+      <td scope="row" class="order-number"><%= link_to formatted_order_number(order.order_number), sales_order_path(order) %></td>
+      <td class="date"><%= std_date(order.order_date) %></td>
+      <td class="order-number"><%= order.po_number %></td>   
+      <td class="name"><%= order.customer_account.name %></td>
+      <td class="address"><%= order.ship_to_address.present? ? order.ship_to_address.name : nil %></td>
+      <td class="date"><%= std_date(order.po_ship_date) %></td>
+      <td class="date"><%= std_date(order.po_pickup_date) %></td>
+      <td class="text-center check"><%= tag.i class: ["fas", order.acknowledged ? "fa-check-circle" : "fa-times-circle"] %></td>
+      <td class="text-center check">
+        <% if order.inventory_status == "complete" %>
+          <%= tag.i class: ["fas", "fa-check-circle"] %>
+        <% elsif order.inventory_status == "incomplete" %>
+          <%= tag.i class: ["fas", "fa-times-circle"] %>
+        <% else %>
+          <%= tag.i class: ["fas", "fa-minus-circle", "fa-orange"] %>
+        <% end %>
+      </td>
+      <td class="text-center check"><%= tag.i class: ["fas", order.dc_notified ? "fa-check-circle" : "fa-times-circle"] %></td>
+      <td class="text-center check"><%= tag.i class: ["fas", order.shipped ? "fa-check-circle" : "fa-times-circle"] %></td>
+      <td class="text-center check"><%= tag.i class: ["fas", order.invoiced ? "fa-check-circle" : "fa-times-circle"] %></td>
+      <td></td>
+
+      <td class="text-right">
+        <div class="d-flex justify-content-around icon-group">
+          <span>
+            <%= link_to "", data: {toggle: "collapse", target: "#sales-order-#{order.order_number}"} do %>
+              <i class="fas fa-caret-down"></i></a>
+            <% end %>
+          </span>
+          <div class="icon"></div>
+          <%= render "application/shared/link_edit", locals: { id: order.id, path: sales_order_path(order) } %>
+          <%= render "application/shared/link_delete", locals: { id: order.id, path: sales_order_path(order) } %>
+        </div>
+      </td>
+    <% end %>
+
+    <%= tag.tr class: ["collapse", "subform"], id: "sales-order-#{order.order_number}" do %>
+      <td colspan="14" class="table-form">
+        <div class="card">
+          <div class="card-body table-subform">
+            <div class="row mt-2">
+              <div class="col" id="order-lines-col">  
+                <%= render "sales/orders/index/body_sub_table/table", order: order %>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </td>
+    <% end %>    
+  <% end %>

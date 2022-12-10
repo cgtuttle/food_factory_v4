@@ -1,0 +1,29 @@
+<div class="row mt-5">
+  <div class="col-2">
+  </div>
+  <div class="col-8">  
+
+    <%= form_for @user_session, url: user_sessions_path, id: "login" do |f| %>
+      <%= render "layouts/alerts/errors", index: @user_session %>
+      <%= render "layouts/alerts/messages" %>
+
+      <div class="form-group">
+        <%= f.label :email, class: "login-form-label" %>
+        <%= f.email_field :email, class: 'form-control form-control-sm' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, class: "login-form-label" %>
+        <%= f.password_field :password, class: 'form-control form-control-sm' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :remember_me, class: "login-form-label" %>
+        <%= f.check_box :remember_me %>
+      </div>
+
+      <%= f.submit "Log in", class: 'btn btn-primary btn-sm' %>
+
+    <% end %>
+  </div>
+</div>

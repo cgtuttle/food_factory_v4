@@ -1,0 +1,55 @@
+<%= form_with model: @user, url: locals[:path], role: 'form' do |f| %>
+  <%= render 'layouts/alerts/errors', index: @user %>
+
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.text_field :email, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, :class => "form-control" %>
+  </div>
+
+  <div class="form-group mt-5">
+    <p><strong>Companies</strong></p>
+    <%= hidden_field_tag "security_user[company_ids][]", nil %>
+    <% @companies.each do |company| %>
+      <div class="row">
+        <div class="col-6">
+          <%= label_tag dom_id(company), company.name %>
+        </div>
+        <div class="col-md-3 col-xl-3 col-6">
+          <%= check_box_tag "security_user[company_ids][]", company.id, @user.company_ids.include?(company.id), :class => "form-control form-control-sm check-box", id: dom_id(company) %>
+        </div>
+      </div>
+    <% end %> 
+  </div>
+
+  <div class="form-group mt-5">
+    <div class="row">
+      <div class="col">
+        <p><strong>Permissions</strong></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <%= f.label :admin, class: "form-check-label" %>
+      </div>
+      <div class="col-6 col-md-3 col-xl-3">
+        <%= f.check_box :admin, :class => "form-control form-control-sm check-box" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group mt-5">
+    <%= f.submit 'Submit', :class => 'btn btn-primary' %>
+    <%= link_to "Cancel", :back, :class => 'btn btn-secondary' %>
+  </div>
+
+<% end %>

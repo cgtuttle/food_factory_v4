@@ -1,0 +1,34 @@
+<%= form_with(model: [@item, @item_lot], url: locals[:path], local: true, role: 'form') do |f| %>
+  <%= render 'layouts/alerts/errors', index: @item_lot %>
+
+  <div class="row">
+    <div class="col">
+
+      <% if @item.inventory_class.lot_format == 'Text' %>
+
+        <%= tag.div class: "form-group item-lot-text-group", id: "text-input-group" do %>
+          <%= f.label :lot_code %>        
+          <%= f.text_field :lot_code, class: "form-control", id: "item-lot-text-input" %>
+        <% end %>
+
+      <% elsif @item.inventory_class.lot_format == 'Date' %>
+        
+        <%= tag.div class: "form-group item-lot-date-group", id: "date-input-group" do %>
+          <%= f.label :lot_code %>        
+          <%= f.date_field :lot_code, class: "form-control", id: "item-lot-date-input" %>
+        <% end %>
+      <% end %>
+
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col">
+      <div class="form-group">
+        <%= f.submit 'Submit', :class => 'btn btn-primary' %>
+        <%= link_to "Cancel", :back, :class => 'btn btn-secondary' %>
+      </div>
+    </div>
+  </div>
+
+<% end %>

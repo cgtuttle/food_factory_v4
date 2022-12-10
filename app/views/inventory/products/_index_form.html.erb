@@ -1,0 +1,21 @@
+  <tr class="table-form-row">
+    <th scope="row" class="form-cell"><%= f.text_field :code, class: "form-control form-control-sm" %></th>
+    <th class="form-group form-cell"><%= f.text_field :name, class: "form-control form-control-sm" %></th> 
+    <th class="form-group form-cell"><%= f.collection_select :item_id, Inventory::Item.all, :id, :name, {prompt: true}, { class: "form-control form-control-sm" } %></th>
+    <th class="form-group form-cell"><%= f.text_field :gtin_14, class: "form-control form-control-sm" %></th>
+    <th class="form-group form-cell"><%= f.text_field :unit_upc, class: "form-control form-control-sm" %></th>
+    <th class="form-group form-cell"><%= f.text_field :unit_qty, class: "form-control form-control-sm" %></th>
+    
+    <th class="text-right form-cell">
+      <div class="d-flex icon-group justify-content-between">
+        <%= render "application/shared/link_save" %>
+        <div class="icon"></div>
+        <div class="icon"></div>
+        <div class="icon">
+          <%= link_to products_path do %>
+            <i class="fas fa-trash-alt" title="Clear">
+          <% end %></i>
+        </div>
+      </div>
+    </th>
+  </tr>

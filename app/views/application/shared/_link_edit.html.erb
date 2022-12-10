@@ -1,0 +1,5 @@
+<span class="text-center">
+  <%= link_to controller: locals[:controller].present? ? locals[:controller] : controller_name, action: "edit", id: locals[:id] do %>
+    <i class="fas fa-edit" data-toggle="tooltip" data-placement="top" title="Edit"></i>
+  <% end %>
+</span>

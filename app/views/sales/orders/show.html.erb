@@ -1,0 +1,46 @@
+<% @width_class = "col-12" %>
+<div class="row mt-3 mb-3">
+
+  <div class="col-xl-5 mt-3">
+    <%= render 'sales/orders/show/order_panel_1' %>
+  </div>
+
+  <div class="col-xl"></div>
+
+  <div class="col-xl-5">
+    <div class="row">
+      <div class="col text-right">
+        <span>
+          <%= render "application/shared/link_edit", locals: { id: @order.id, path: sales_order_path(@order) } %>
+          <%= render "application/shared/link_new", locals: { path: new_sales_order_path } %>      
+          <%= render "application/shared/link_delete", locals: { id: @order.id, path: sales_order_path(@order) } %>
+        </span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xl">
+        <%= render 'sales/orders/show/order_panel_2' %>
+      </div>
+
+      <div class="col-xl">
+        <%= render 'sales/orders/show/order_panel_3' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <div class="strip-panel">
+      <div class="data-field"><% @order.po_pickup_date %></div>
+      <div class="data-field"><% @order.po_ship_date %></div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <%= render "sales/orders/show/order_lines_table" %>
+  </div>
+</div>

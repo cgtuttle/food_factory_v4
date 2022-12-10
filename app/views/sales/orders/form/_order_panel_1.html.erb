@@ -1,0 +1,27 @@
+<div class="row form-group">
+  <%= f.label :po_number, "Customer PO", class: "col-xl-6 col-form-label" %>
+  <div class="col-xl-6">
+    <%= f.text_field :po_number, class: "form-control" %>
+  </div>
+</div>
+
+<div class="row form-group">
+  <%= f.label :order_date, "Order Date", class: "col-xl-6 col-form-label" %>
+  <div class="col-xl-6">          
+    <%= f.date_field :order_date, class: "form-control" %>
+  </div>
+</div>
+
+<div class="row form-group">
+  <%= f.label :po_pickup_date, "Requested Pickup On", class: "col-xl-6 col-form-label" %>
+  <div class="col-xl-6">          
+    <%= f.date_field :po_pickup_date, class: "form-control" %>
+  </div>
+</div>
+
+<div class="row form-group">
+  <%= f.label :po_ship_date, "Requested Ship On", class: "col-xl-6 col-form-label" %>
+  <div class="col-xl-6">          
+    <%= f.date_field :po_ship_date, class: "form-control" %>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<div class="panel-heading">Ship From</div>
+<div class="panel-body border rounded bg-light p-2">
+  <% if @order.ship_from_address.present? %>
+    <%= render partial: "settings/addresses/block_view", locals:{address: @order.ship_from_address} %>
+  <% end %>
+</div>
+
+

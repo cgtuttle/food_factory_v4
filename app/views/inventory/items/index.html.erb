@@ -1,0 +1,19 @@
+<% content_for :context_title do %>
+  Inventory Items
+<% end %>
+
+<% content_for :table do %>
+  <%= form_with url: items_path, model: @item, id: "inventory_item_table_form" do |form| %>
+    <table class="form-table" id="items-table">
+      <thead>
+          <%= render 'index_table_head' %>
+        </thead>
+        <tbody>
+          <%= render partial: "index_form", locals: {f: form} %>
+          <%= render 'index_table_body'%>
+        </tbody>
+    </table>
+  <% end %>
+<% end %>
+
+

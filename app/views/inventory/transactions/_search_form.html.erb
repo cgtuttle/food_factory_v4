@@ -1,0 +1,2 @@
+
+<%= select_tag :new_item_id, options_for_select(Inventory::Item.all.order(:name).collect{|x| [x.name, x.id]}), prompt: "Item Search", class: "form-control form-control-sm", id: "transaction-item-search-select" %>
