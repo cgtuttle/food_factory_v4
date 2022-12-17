@@ -12,7 +12,7 @@ class Security::UsersController < ApplicationController
     @user.approved = true
     @user.confirmed = true
     if @user.save!
-      redirect_to dashboard_path, notice: "Successfully created new user"
+      redirect_to users_path, notice: "Successfully created new user"
     else
       flash.now[:alert] = "Could not create new user"
       render :new
@@ -26,7 +26,7 @@ class Security::UsersController < ApplicationController
 
   def update
     @user = Security::User.find(params[:id])
-    @user.update_attributes(user_params)
+    @user.update(user_params)
     if @user.save
       redirect_to dashboard_path if !current_user.admin?
       redirect_to users_path if current_user.admin?

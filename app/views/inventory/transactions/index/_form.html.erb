@@ -34,16 +34,21 @@
 </tr>
 
 <tr class="collapse subform" id="inv-trans-index-subform">
+  <td colspan="2"></td>
   <td colspan="2" class="table-form form-cell">
     <div class="card">
       <div class="card-body table-subform">
         <div class="form-group item-lot-text-group">
           <%= f.label :new_item_lot_code, "Lot code", class: "form-label" %>
-          <%= f.text_field :new_item_lot_code, class: "form-control fomr-control-sm", id: "new-item-lot-text" %>
+          <%= f.text_field :new_item_lot_code, class: "form-control form-control-sm", id: "new-item-lot-text" %>
         </div>
         <div class="form-group item-lot-text-group">
           <%= f.label :expire_date, "Expiration Date", class: "form-label" %>
-          <%= f.date_field :expire_date, class: "form-control fomr-control-sm", id: "new-item-expire_date" %>
+          <%= f.date_field :expire_date, class: "form-control form-control-sm", id: "new-item-expire_date" %>
+        </div>
+        <div class="form-group item-lot-button-group">
+          <%= button_tag 'Okay', type: 'button', class: 'btn btn-sm btn-primary', id: 'inv-trans-new-lot-ok-btn' %>
+          <%= button_tag 'Edit', type: 'button', class: 'btn btn-sm btn-secondary', disabled: :true %>
         </div>
       </div>
     </div>

@@ -19,7 +19,7 @@ class Settings::AddressesController < ApplicationController
   end
 
   def update
-    if @address.update_attributes(address_params)
+    if @address.update(address_params)
       redirect_to address_path(@address), notice: "Successfully updated address"
     else
       flash.now[:alert] = "Could not update address"

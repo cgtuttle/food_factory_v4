@@ -1,5 +1,5 @@
 <% @transaction_types.each do |type| %>
-  <tr>
+  <tr class="table-row">
     <td><%= link_to type.code, transaction_type_path(type.id) %></td>
     <td><%= type.name %></td>
     <td><%= type.default_direction %></td>

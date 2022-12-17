@@ -1,8 +1,10 @@
-
-<% content_for :head do %>
-  <%= render 'index_table_head' %>
-<% end %>
-
-<% content_for :body do %>
-  <%= render 'index_table_body'%>
+<% content_for :table do %>
+  <table class="table" id="user-table">
+    <thead>
+      <%= render 'index_table_head' %>
+    </thead>
+    <tbody>
+      <%= render 'index_table_body'%>
+    </tbody>
+  </table> 
 <% end %>

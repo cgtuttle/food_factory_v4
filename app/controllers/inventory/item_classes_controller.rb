@@ -20,7 +20,7 @@ class Inventory::ItemClassesController < ApplicationController
   end
 
   def update
-    if @item_class.update_attributes(item_class_params)
+    if @item_class.update(item_class_params)
       redirect_to item_class_path(@item_class), notice: "Successfully updated item_class"
     else
       flash.now[:alert] = "Could not update item_class"

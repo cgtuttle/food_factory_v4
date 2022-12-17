@@ -22,7 +22,7 @@ class Purchases::VendorsController < ApplicationController
   end
 
   def update
-    if @vendor.update_attributes(vendor_params)
+    if @vendor.update(vendor_params)
       redirect_to vendor_path(@vendor), notice: "Successfully updated vendor"
     else
       flash.now[:alert] = "Could not update vendor"

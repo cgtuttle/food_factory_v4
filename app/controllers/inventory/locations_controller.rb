@@ -20,7 +20,7 @@ class Inventory::LocationsController < ApplicationController
   end
 
   def update
-    if @location.update_attributes(location_params)
+    if @location.update(location_params)
       redirect_to location_path(@location), notice: "Successfully updated location"
     else
       flash.now[:alert] = "Could not update location"

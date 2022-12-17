@@ -7,6 +7,7 @@ export function inventoryTransactionDisplay(){
   selectItem();
   changeSelectedItem();
   addNewLot();
+  newLotAdded();
   selectType();
   updateQuantities();
 
@@ -66,6 +67,14 @@ export function inventoryTransactionDisplay(){
       }
     })
   }
+
+  function newLotAdded(){
+    var okayButton = $("#inv-trans-new-lot-ok-btn");
+    console.log("Running newLotAdded");
+    okayButton.on("click", function(){
+    })
+  }
+
 
   function selectType(){
     console.log("Running selectType");

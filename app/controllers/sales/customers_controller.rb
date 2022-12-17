@@ -23,7 +23,7 @@ class Sales::CustomersController < ApplicationController
   end
 
   def update
-    if @customer.update_attributes(customer_params)
+    if @customer.update(customer_params)
       redirect_to customer_path(@customer), notice: "Successfully updated customer"
     else
       flash.now[:alert] = "Could not update customer"

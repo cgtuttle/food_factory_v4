@@ -19,7 +19,7 @@ class Settings::UnitsController < ApplicationController
   end
 
   def update
-    if @unit.update_attributes(unit_params)
+    if @unit.update(unit_params)
       redirect_to unit_path(@unit), notice: "Successfully updated unit of measure"
     else
       flash.now[:alert] = "Could not update unit of measure"

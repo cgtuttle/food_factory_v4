@@ -20,7 +20,7 @@ class Inventory::TransactionTypesController < ApplicationController
   end
 
   def update
-    if @transaction_type.update_attributes(transaction_type_params)
+    if @transaction_type.update(transaction_type_params)
       redirect_to transaction_type_path(@transaction_type), notice: "Successfully updated transaction type"
     else
       flash.now[:alert] = "Could not update transaction type"
