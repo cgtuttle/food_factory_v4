@@ -12,8 +12,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= content_for?(:secure) ? yield(:secure) : yield %>
+  <body>    
+    <%= content_for?(:app_container) ? yield(:app_container) : yield  %>    
   </body>
-
 </html>

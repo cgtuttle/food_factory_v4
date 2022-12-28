@@ -1,5 +1,5 @@
 <% content_for :content do %>
-  <%= yield %>
+  <%= yield :new %>
 <% end %>
 
 <%= render template: "layouts/app_container" %>

@@ -1,15 +1,14 @@
-<% content_for :table do %>
-  <%= form_with url: products_path, model: @product, id: "item_class_table_form" do |form| %>
-    <table class="form-table" id="item_class-table">
-      <thead>
-        <%= render 'index_table_head' %>
-      </thead>
-      <tbody>
-        <%= render partial: "index_form", locals: {f: form} %>
-        <%= render 'index_table_body'%>
-      </tbody>
-    </table>
-  <% end %>
+<div class="add-new sticky">
+  <%= render 'application/shared/link_new' %>
+</div>
+<%= form_with(model: @item_class, url: item_classes_path, local: true, id: "item_class_table_form") do |form| %>
+  <table class="form-table" id="item_class-table">
+    <thead>
+      <%= render 'index_table_head' %>
+    </thead>
+    <tbody>
+      <%= render partial: "index_form", locals: {f: form} %>
+      <%= render 'index_table_body'%>
+    </tbody>
+  </table>
 <% end %>
-
-

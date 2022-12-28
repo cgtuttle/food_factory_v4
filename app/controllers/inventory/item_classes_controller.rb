@@ -2,6 +2,8 @@ class Inventory::ItemClassesController < ApplicationController
 
   before_action :define_resources
 
+#  layout "app_container"
+
   def new
     @item_class = Inventory::ItemClass.new
   end
@@ -11,6 +13,7 @@ class Inventory::ItemClassesController < ApplicationController
     if @item_class.save
       redirect_to item_classes_path, notice: "Successfully created new item_class"
     else
+      logger.debug "Save failed"
       flash.now[:alert] = "Could not create new item_class"
       render :new
     end

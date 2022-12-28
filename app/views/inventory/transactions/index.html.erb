@@ -4,6 +4,7 @@
 
 <% content_for :table do %>
   <%= form_with url: transactions_path, model: @transaction, id: "inventory_transaction_table_form" do |form| %>
+    <%= render 'layouts/alerts/errors', index: @transaction %>
     <table class="form-table" id="inventory-transactions-table">
       <thead>
         <%= render 'inventory/transactions/index/table_head' %>

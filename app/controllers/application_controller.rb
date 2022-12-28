@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   helper_method :current_user_session, :current_user, :current_customer, :current_company
   around_action :scope_current_company
-  before_action :require_login, :update_path
-  layout :layout_selector
+  before_action :require_login, :update_path, :set_layout
+
 
   private
     def update_path
@@ -15,6 +15,14 @@ class ApplicationController < ActionController::Base
         session[:current_controller] = controller_name
         session[:current_action] = action_name
         session[:current_path] = request.path
+      end
+    end
+
+    def set_layout
+      if action_name == 'welcome'
+        self.class.layout 'welcome_container'
+      else
+        self.class.layout 'app_container'
       end
     end
 
@@ -64,21 +72,6 @@ class ApplicationController < ActionController::Base
     def current_customer
       @current_customer ||= session[:current_customer_id] &&
         Sales::Customer.find(session[:current_customer_id])
-    end
-
-    def layout_selector
-      case action_name
-      when "new"
-        "layouts/new"
-      when "edit"
-        "layouts/edit"
-      when "show"
-        "layouts/show"
-      when "index"
-        "layouts/index"
-      else
-        "layouts/application"
-      end
     end
 
 

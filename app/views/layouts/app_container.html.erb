@@ -1,5 +1,4 @@
-<% content_for :secure do %>
-
+<% content_for :app_container do %>    
   <div class="full-height d-flex flex-column">
           
     <%= render "layouts/navbar" %>
@@ -19,16 +18,17 @@
           </div>
 
           <h3 class="app-title"><%= content_for?(:context_title) ? yield(:context_title) : app_page_title %></h3>
+          <%# ...render the :context_title code in the model action view %>
 
         </div>
 
-        <%= content_for?(:content) ? yield(:content) : yield %>
+        <%= yield %>
+
       </div>
       
     </div> 
     
   </div>
-  
 <% end %>
 
 <%= render template: "layouts/application" %>

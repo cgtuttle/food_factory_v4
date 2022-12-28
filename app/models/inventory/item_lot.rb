@@ -1,4 +1,6 @@
 class Inventory::ItemLot < ApplicationRecord
+  validates :lot_code, uniqueness: {scope: :item_id}
+  
   belongs_to :item
   has_many :transactions
   has_many :item_locations, through: :item

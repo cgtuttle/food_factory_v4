@@ -1,9 +1,7 @@
 <div class="container-fluid" id="security-window">
   <div id="content" class="ml-2">
-
     <div>
       <%= yield %>
     </div>
-
   </div>
 </div>

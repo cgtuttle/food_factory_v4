@@ -1,4 +1,4 @@
-<%= form_with(model: @item_class, url: locals[:path], local: true, role: 'form') do |f| %>
+<%= form_with(model: @item_class, url: locals[:path], local: true) do |f| %>
   <%= render 'layouts/alerts/errors', index: @item_class %>
 
   <div class="row">

@@ -2,8 +2,13 @@
   Inventory Items
 <% end %>
 
+<div class="add-new sticky">
+  <%= render 'application/shared/link_new' %>
+</div>
+
 <% content_for :table do %>
   <%= form_with url: items_path, model: @item, id: "inventory_item_table_form" do |form| %>
+    <%= render 'layouts/alerts/errors', index: @item %>
     <table class="form-table" id="items-table">
       <thead>
           <%= render 'index_table_head' %>
@@ -16,4 +21,4 @@
   <% end %>
 <% end %>
 
-
+<%= render template: "layouts/application" %>

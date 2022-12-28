@@ -3,6 +3,7 @@
     <%= render 'application/shared/link_new' %>
   </div>
   <%= yield :table %>
+  <%# ...render the :table code in the model action view %>
 <% end %>
 
 <%= render template: "layouts/app_container" %>

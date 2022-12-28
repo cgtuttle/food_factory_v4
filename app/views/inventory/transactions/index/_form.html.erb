@@ -6,7 +6,7 @@
 
   <th class="form-group form-cell"><%= f.date_field :transaction_date, class: "form-control form-control-sm", id: "inv-transaction-date", value: "#{date_value}" %></th>
 
-  <th><%= f.collection_select :item_lot_id, Inventory::ItemLot.all, :id, :lot_code, {prompt: "..."}, {class: "form-control form-control-sm", id: "inv-trans-form-item-lot-select"} %></th>
+  <th><%= f.collection_select :item_lot_id, Inventory::ItemLot.select(:lot_code).distinct, :id, :lot_code, {prompt: "..."}, {class: "form-control form-control-sm", id: "inv-trans-form-item-lot-select"} %></th>
   <th><%= text_field_tag  "expires", "", readonly: true, class: "form-control-sm form-control text-right", id: "inv-trans-form-expires" %></th>
   <th><%= f.collection_select :location_id, Inventory::Location.all, :id, :name, {prompt: "..."}, {class: "form-control form-control-sm", id: "transaction-location"} %></th>
   <th><%= f.collection_select :transaction_type_id, Inventory::TransactionType.all, :id, :code, {prompt: "..."}, {class: "form-control form-control-sm", id: "inv-trans-form-type"} %></th>

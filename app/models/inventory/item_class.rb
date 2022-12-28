@@ -1,4 +1,5 @@
 class Inventory::ItemClass < ApplicationRecord
+  validates :code, uniqueness:{ scope: :company_id }
   has_many :items
   has_many :item_lots, through: :item
 

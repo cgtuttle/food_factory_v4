@@ -7,10 +7,11 @@ module Inventory
     end
 
     def call
-      @item.save!
-      @item_lot = @item.lots.create!(lot_code: "None")
-      return @item
+      if @item.save
+        @item_lot = @item.lots.create!(lot_code: "None")
+        return @item
+      end
+      return false
     end
-
   end
 end

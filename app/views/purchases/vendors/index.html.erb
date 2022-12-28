@@ -1,9 +1,14 @@
-
-<% content_for :head do %>
-  <%= render 'index_table_head' %>
-<% end %>
-
-<% content_for :body do %>
-  <%= render 'index_table_body'%>
+<% content_for :table do %>
+  <%= form_with model: @vendor, url: vendors_path, role: 'form' do |f| %>
+    <table class="form-table" id="vendor-table">
+      <thead>
+        <%= render 'index_table_head' %>
+      </thead>
+      <tbody>
+        <%= render partial: "index_form", locals: {f: f} %>
+        <%= render 'index_table_body'%>
+      </tbody>
+    </table>
+  <% end %>
 <% end %>
 

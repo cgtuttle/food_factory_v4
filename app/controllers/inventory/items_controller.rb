@@ -11,7 +11,6 @@ class Inventory::ItemsController < ApplicationController
     if Inventory::BuildItem.call(@item)
       redirect_to items_path, notice: "Successfully created new item"
     else
-      flash.now[:alert] = "Could not create new item"
       render :new
     end
   end
