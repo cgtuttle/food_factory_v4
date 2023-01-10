@@ -64,6 +64,9 @@ class Inventory::Transaction < ApplicationRecord
   end
 
   def self.with_running_sum(**args)
+    
+    puts "Running self.with_running_sum"
+    
     find_by_sql(running_sum_sql(**args))
   end
 

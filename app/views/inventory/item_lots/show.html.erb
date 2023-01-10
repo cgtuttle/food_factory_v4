@@ -18,5 +18,9 @@
 <% @field = @item_lot.lot_code %>
 <%= render "application/show_row" %>
 
+<% @label = "Expires on" %>
+<% @field = @item_lot.expire_date %>
+<%= render "application/show_row" %>
+
 <% @id = @item_lot.id %>
 <% @path = item_lot_path(@item_lot) %>

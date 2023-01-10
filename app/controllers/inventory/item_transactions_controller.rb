@@ -17,7 +17,11 @@ class Inventory::ItemTransactionsController < ApplicationController
   end
 
   def index
-    @transactions = Inventory::Transaction.with_running_sum({item_id: @item.id})
+    logger.debug "Running index for item: #{@item.id}"
+    arg_hash = {item_id: @item.id}
+    logger.debug "arg_hash is a #{arg_hash.class}"
+    @transactions = Inventory::Transaction.with_running_sum()
+    # sql = Inventory::Transaction.running_sum_sql({item_id: @item.id})
   end
 
   private

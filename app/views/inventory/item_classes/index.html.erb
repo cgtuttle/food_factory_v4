@@ -2,7 +2,8 @@
   <%= render 'application/shared/link_new' %>
 </div>
 <%= form_with(model: @item_class, url: item_classes_path, local: true, id: "item_class_table_form") do |form| %>
-  <table class="form-table" id="item_class-table">
+  <%= render 'layouts/alerts/errors', index: @item_class %>
+  <table class="form-table" id="item-classes-table">
     <thead>
       <%= render 'index_table_head' %>
     </thead>

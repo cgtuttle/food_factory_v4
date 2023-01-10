@@ -1,5 +1,5 @@
 class Inventory::Item < ApplicationRecord
-  validates :code, uniqueness: { scope: :company_id, message: "is already assigned to another item" }
+  validates :code, uniqueness: { scope: :company_id }
 
   belongs_to :inventory_class, class_name: "ItemClass", foreign_key: "item_class_id"
   belongs_to :base_unit, class_name: "Settings::Unit"

@@ -53,7 +53,7 @@ class Inventory::ItemLotsController < ApplicationController
   private
 
     def item_lot_params
-      params.require(:inventory_item_lot).permit(:item_id, :lot_code)
+      params.require(:inventory_item_lot).permit(:item_id, :lot_code, :expire_date)
     end
 
     def define_resources

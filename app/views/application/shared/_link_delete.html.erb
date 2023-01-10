@@ -1,6 +1,5 @@
 <span class="text-center">
-  <%= link_to locals[:path], method: "delete", data: {confirm: "Are you sure?"} do %>
-<%# Works!<div class="text-right"><%= link_to settings_unit_path(locals[:id]), method: "delete", data: {confirm: true} do %>
+  <%= link_to locals[:path], method: "delete", data: {confirm: "Are you sure?", title: "Deleting data!"} do %>
     <i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top" title="Delete" ></i>
   <% end %>
 </span>

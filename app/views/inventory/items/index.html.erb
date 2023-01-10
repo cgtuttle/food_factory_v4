@@ -6,19 +6,15 @@
   <%= render 'application/shared/link_new' %>
 </div>
 
-<% content_for :table do %>
-  <%= form_with url: items_path, model: @item, id: "inventory_item_table_form" do |form| %>
-    <%= render 'layouts/alerts/errors', index: @item %>
-    <table class="form-table" id="items-table">
-      <thead>
-          <%= render 'index_table_head' %>
-        </thead>
-        <tbody>
-          <%= render partial: "index_form", locals: {f: form} %>
-          <%= render 'index_table_body'%>
-        </tbody>
-    </table>
-  <% end %>
+<%= form_with(url: items_path, model: @item, id: "inventory_item_table_form", local: true) do |form| %>
+  <%= render 'layouts/alerts/errors', index: @item %>
+  <table class="form-table" id="items-table">
+    <thead>
+      <%= render 'index_table_head' %>
+    </thead>
+    <tbody>
+      <%= render partial: "index_form", locals: {f: form} %>
+      <%= render 'index_table_body'%>
+    </tbody>
+  </table>
 <% end %>
-
-<%= render template: "layouts/application" %>

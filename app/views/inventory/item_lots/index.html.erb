@@ -1,15 +1,16 @@
-<% content_for :breadcrumbs do %>
-  <%= render 'breadcrumbs' %>
-<% end %>
-
 <% content_for :context_title do %>  
   <%= "Item Lots for #{@item.code}, #{@item.name}" %>
 <% end %>
 
-<% content_for :table do %>
-  <table class="form-table" id="item-lots-table">
-    <%= render 'inventory/item_lots/index_table_head' %>
-    <%= render 'inventory/item_lots/index_table_body' %>
-  </table>
-<% end %>
+<div class="add-new sticky">
+  <%= render 'application/shared/link_new' %>
+</div>
 
+<table class="form-table" id="item-lots-table">
+  <thead>
+    <%= render 'index_table_head' %>
+  </thead>
+  <tbody>
+    <%= render 'index_table_body' %>
+  </tbody>
+</table>

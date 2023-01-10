@@ -1,8 +1,6 @@
 <% content_for :app_container do %>    
-  <div class="full-height d-flex flex-column">
-          
-    <%= render "layouts/navbar" %>
-    
+  <div class="full-height d-flex flex-column">          
+    <%= render "layouts/navbar" %>    
     <div class="flex-grow-1 d-flex align-items-stretch" id="app-window">
       
       <nav id="sidebar" class="d-none d-xl-block">
@@ -10,9 +8,7 @@
       </nav>
       
       <div id="content-window">
-
         <div class="window sticky">
-
           <div class="sidebar-toggle mr-5 ">
             <%= render "/application/shared/sidebar_toggle" %> 
           </div>
@@ -21,13 +17,9 @@
           <%# ...render the :context_title code in the model action view %>
 
         </div>
-
         <%= yield %>
-
-      </div>
-      
-    </div> 
-    
+      </div>      
+    </div>     
   </div>
 <% end %>
 

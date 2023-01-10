@@ -27,6 +27,7 @@ require("source/accordion_menu")
 require("source/page_overrides")
 require("source/test_hello")
 require("source/collapse")
+require("data-confirm-modal")
 
 require("cocoon")
 

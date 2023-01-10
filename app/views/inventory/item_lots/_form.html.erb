@@ -1,23 +1,28 @@
-<%= form_with(model: [@item, @item_lot], url: locals[:path], local: true, role: 'form') do |f| %>
+<%= form_with(model: [@item, @item_lot], url: locals[:path], local: true) do |f| %>
   <%= render 'layouts/alerts/errors', index: @item_lot %>
 
   <div class="row">
-    <div class="col">
+    <div class="col-xl-6">
 
       <% if @item.inventory_class.lot_format == 'Text' %>
 
-        <%= tag.div class: "form-group item-lot-text-group", id: "text-input-group" do %>
+        <div class="form-group" id="text-input-group">
           <%= f.label :lot_code %>        
           <%= f.text_field :lot_code, class: "form-control", id: "item-lot-text-input" %>
-        <% end %>
+        </div>
 
       <% elsif @item.inventory_class.lot_format == 'Date' %>
         
-        <%= tag.div class: "form-group item-lot-date-group", id: "date-input-group" do %>
+        <div class="form-group" id="date-input-group">
           <%= f.label :lot_code %>        
           <%= f.date_field :lot_code, class: "form-control", id: "item-lot-date-input" %>
-        <% end %>
+        </div>
       <% end %>
+
+      <div class="form-group">
+        <%= f.label :expire_date %>
+        <%= f.date_field :expire_date, class: "form-control" %>
+      </div>
 
     </div>
   </div>
