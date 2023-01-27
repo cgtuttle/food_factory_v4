@@ -2,13 +2,17 @@
   <%= "#{@item.code} - #{@item.name}" %>
 <% end %>
 
+<div class="add-new sticky">
+  <%= render 'application/shared/link_new' %>
+</div>
+
 <%= form_with(url: item_transactions_path, model: [@item, @transaction], local: true, role: 'form') do |f| %>
   <table class="form-table" id="inventory-transactions-table">
     <thead>
       <%= render 'inventory/transactions/index/table_head' %>
     </thead>
     <tbody>
-      <%= render partial: 'inventory/item_transactions/form', locals: {f: f} %>
+      <%= render partial: 'inventory/item_transactions/index/form', locals: {f: f} %>
       <%= render 'inventory/transactions/index/table_body'%>
     </tbody>
   </table>

@@ -1,9 +1,33 @@
 class ApplicationController < ActionController::Base
-  include Pundit
+  include Pundit::Authorization
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   helper_method :current_user_session, :current_user, :current_customer, :current_company
   around_action :scope_current_company
-  before_action :require_login, :update_path, :set_layout
+  before_action :require_login, :update_path, :set_layout, :update_paths
+
+  def update_paths
+    @previous_controller = session[:previous_controller]
+    @previous_action = session[:previous_action]
+    @previous_path = session[:previous_path]
+    @current_controller = session[:current_controller]
+    @current_action = session[:current_action]
+    @current_path = session[:current_path]
+    @current_module = self.class.name.deconstantize
+    @current_page = self.class.name.demodulize
+    logger.debug "@previous_controller: #{@previous_controller}"
+    logger.debug "@previous_action: #{@previous_action}"
+    logger.debug "@previous_path: #{@previous_path}"
+    logger.debug "@current_controller: #{@current_controller}"
+    logger.debug "@current_action: #{@current_action}"
+    logger.debug "@current_path: #{@current_path}"
+    logger.debug "@current_module: #{@current_module}"
+    logger.debug "@current_page: #{@current_page}"
+    current_pathnames = Pathname.new(@current_path).each_filename
+    current_pathnames.each{ |name| logger.debug "current path split: #{name}"}
+    logger.debug "current_module: #{current_pathnames.first}"
+    previous_pathnames = Pathname.new(@previous_path).each_filename
+    previous_pathnames.each{ |name| logger.debug "previous path split: #{name}"}
+  end
 
 
   private

@@ -9,13 +9,12 @@
       
       <div id="content-window">
         <div class="window sticky">
-          <div class="sidebar-toggle mr-5 ">
-            <%= render "/application/shared/sidebar_toggle" %> 
+          <div class="d-flex flex-row">
+            <div>               
+              <h3 class="app-title pt-2"><%= content_for?(:context_title) ? yield(:context_title) : app_page_title %></h3>
+              <%# ...render the :context_title code in the model action view %>
+            </div>
           </div>
-
-          <h3 class="app-title"><%= content_for?(:context_title) ? yield(:context_title) : app_page_title %></h3>
-          <%# ...render the :context_title code in the model action view %>
-
         </div>
         <%= yield %>
       </div>      

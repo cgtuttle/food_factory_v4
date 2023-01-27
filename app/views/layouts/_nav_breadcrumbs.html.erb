@@ -3,6 +3,8 @@
 <% if @paths %>
     <ol class="navbar-nav breadcrumb breadcrumb-sm">
 
+      <li class="nav-item breadcrumb-item active" aria-current="module"><%= @current_module %></li>
+
       <% @paths.each do |path| %>
         <li class="nav-item breadcrumb-item"><%= link_to path[:label], path[:path] %></li>
       <% end %>

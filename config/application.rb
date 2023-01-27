@@ -16,7 +16,7 @@ module FoodFactoryV4
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    config.action_controller.include_all_helpers = false
+    # config.action_controller.include_all_helpers = false
 
     config.active_record.schema_format = :sql
 

@@ -1,4 +1,8 @@
   <nav class="navbar navbar-expand-xl navbar-dark bg-dark position-sticky" id="navbar-inside">
+  
+    <div class="sidebar-toggle mr-5 navbar-nav">
+      <%= render "/application/shared/sidebar_toggle" %>
+    </div>
     
     <%= link_to(root_path, {}, {class: "navbar-brand", id: "root-path-link"}) do %>
       <h3 id="navbar-brand">F<sub id="navbar-brand-subscript">f</sub></h3>

@@ -6,7 +6,7 @@ $container-margin: 1em;
 $sidebar-width: 16em;
 $navbar-height: 4em;
 $window-background-color: white;
-$sticky-window-height: 5em;
+$sticky-window-height: 2em;
 $add-new-sticky-height: 2.5em;
 
 // Global
@@ -65,7 +65,7 @@ body{
 }
 
 .fa-list {
-   margin-top: 1em;
+   color: white;
 }
 
 button.save {
@@ -186,6 +186,9 @@ input.form-control-sm.form-control-plaintext.add-new {
   color: $text-color;
 }
 
+label {
+  font-weight: 300;
+}
 
 // Lists
 

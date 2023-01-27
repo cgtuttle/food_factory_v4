@@ -29,6 +29,7 @@ class Inventory::ItemsController < ApplicationController
   end
 
   def show
+    @current_page = "item #{@item.id}"
   end
 
   def index

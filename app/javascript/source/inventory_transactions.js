@@ -1,15 +1,16 @@
 import { setInputMethod } from '../source/inventory_item_lots'
 
 export function inventoryTransactionDisplay(){
-  var selectedItemId = null;
 
   resetForm();
-  selectItem();
+  selectTransactionItem();
+  focusItemTransactionLot();
   changeSelectedItem();
   addNewLot();
-  newLotAdded();
+  cancelNewLot();
   selectType();
   updateQuantities();
+  test();
 
   function resetForm(){    
     console.log("running resetForm - reseting");
@@ -17,28 +18,46 @@ export function inventoryTransactionDisplay(){
     $("#inv-trans-index-subform").collapse.hide;
   }
 
-  function selectItem(){
-    var itemSelect = $("#inv-trans-form-item-select");
-    var lotSelect = $("#inv-trans-form-item-lot-select")
+  function test(){
+  }
+
+  function selectTransactionItem(){
+    var itemSelect = $("[id^=inv-trans-form-item-select]");
+    var lotSelect = $("[id^=inv-trans-form-item-lot-select]")
     itemSelect.on("change", function(){
       var itemId = itemSelect.val();
       console.log("inv-trans-form-item-select changed to " + itemId);
-      $.ajax({
-        url: "../inventory/items/" + itemId + "/lots_lookups",
-        success: function(data){
-          lotSelect.children().remove();
-          var listItems = [];
-          listItems += '<option value="blank">...</option>'
-          listItems += '<option value="new">New...</option>'
-          $.each(data,function(key, value) {
-            listItems += '<option value="' + value.id + '">' + value.lot_code + '</option>';
-            console.log("listItems: " + listItems); 
-          }); 
-          lotSelect.append(listItems);
-        },
-        error: function(data){}
-      })
-      
+      lotLookup(itemId, lotSelect);      
+    })
+  }
+
+  function focusItemTransactionLot(){
+    var itemSelect = $("#inv-item-trans-form-item-lot-select")
+    itemSelect.on("focus", function(){
+      var itemId = gon.item_id;
+      console.log("inv-item-trans-form-item-select changed to " + itemId);
+      lotLookup(itemId, itemSelect);      
+    })
+  }
+
+  function lotLookup(itemId, selector){
+    var lotSelect = $(selector)
+    console.log("Running lotLookup");
+    console.log("itemId = " + itemId);
+    $.ajax({
+      url: "/inventory/items/" + itemId + "/lots_lookups",
+      success: function(data){
+        lotSelect.children().remove();
+        var listItems = [];
+        listItems += '<option value="blank">...</option>'
+        listItems += '<option value="new">New...</option>'
+        $.each(data,function(key, value) {
+          listItems += '<option value="' + value.id + '">' + value.lot_code + '</option>';
+        }); 
+        lotSelect.append(listItems);
+        console.log("listItems: " + listItems);
+      },
+      error: function(data){} 
     })
   }
 
@@ -53,7 +72,7 @@ export function inventoryTransactionDisplay(){
   }
 
   function addNewLot(){
-    var lotSelect = $("#inv-trans-form-item-lot-select");
+    var lotSelect = $("[id^=inv-trans-form-item-lot-select]");
     console.log("Running addNewLot");
     lotSelect.on("change", function(){
       console.log("Running addNewLot on change");
@@ -61,27 +80,28 @@ export function inventoryTransactionDisplay(){
       var selected = lotSelect.val();
       if(selected == "new"){
         console.log("Lot select New... selected");
-        $('#inv-trans-index-subform').collapse('show');
+        $('[id^=inv-trans-index-subform]').collapse('show');
       } else {
-        $('#inv-trans-index-subform').collapse('hide');
+        $('[id^=inv-trans-index-subform]').collapse('hide');
       }
     })
   }
 
-  function newLotAdded(){
-    var okayButton = $("#inv-trans-new-lot-ok-btn");
-    console.log("Running newLotAdded");
-    okayButton.on("click", function(){
+  function cancelNewLot(){
+    var cancelButton = $("#inventory-transaction-new-lot-cancel")
+    cancelButton.on("click", function(){
+      $('[id^=inv-trans-index-subform]').collapse('hide');
+      $('[id^=inv-trans-form-item-lot-select]').val('blank');
     })
-  }
 
+  }
 
   function selectType(){
     console.log("Running selectType");
   }
 
   function updateQuantities(){
-    console.log("Running unpdateQuantities");
+    console.log("Running updateQuantities");
     var changeInput = $('.inv-trans-form-change');
     changeInput.on("change", function(){
       var itemId = $("#inv-trans-form-item-select").val();

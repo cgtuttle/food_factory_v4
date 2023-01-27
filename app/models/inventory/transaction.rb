@@ -16,7 +16,7 @@ class Inventory::Transaction < ApplicationRecord
     incr - decr
   end
 
-  def self.running_sum_sql(**args)
+  def self.running_sum_sql(filters={})
 
     # Build SQL statement in three parts:
     #
@@ -47,10 +47,10 @@ class Inventory::Transaction < ApplicationRecord
     
     sql_where = ""
 
-    if args.size > 0
+    if filters.size > 0
       sql_where = "WHERE"
       i = 0
-      args.each do |key, value|
+      filters.each do |key, value|
         sql_where = sql_where + " AND" if i > 0 
         sql_where = sql_where + " t.#{key} = #{value}"
         i += 1
@@ -63,11 +63,11 @@ class Inventory::Transaction < ApplicationRecord
 
   end
 
-  def self.with_running_sum(**args)
+  def self.with_running_sum(filters = {})
     
-    puts "Running self.with_running_sum"
+    puts "Running self.with_running_sum for #{filters}"
     
-    find_by_sql(running_sum_sql(**args))
+    find_by_sql(running_sum_sql(filters))
   end
 
   def item_code

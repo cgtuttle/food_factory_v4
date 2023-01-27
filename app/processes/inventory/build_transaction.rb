@@ -1,11 +1,11 @@
 module Inventory
   class BuildTransaction < ApplicationProcess
 
-    def initialize(params, item_id: nil, lot_id: nil)
+    def initialize(params, item_id = nil, lot_id = nil)
       @params = params
       @item_id = @params[:item_id] ? @params[:item_id] : item_id
       @item = Inventory::Item.find(@item_id)    
-      @lot_id = lot_id
+      @lot_id = lot_id || "None"
     end
 
     def call

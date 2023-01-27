@@ -1,3 +1,8 @@
+<% @paths = [{path: @previous_path, label: page_name(@previous_path, @previous_action)}] %>
+
+<% @id = @item.id %>
+<% @path = items_path(@item) %>
+
 <% @label = "ID" %>
 <% @field = @item.id %>
 <%= render "application/show_row" %>
@@ -26,5 +31,3 @@
 
 <hr/ class="list-header">
 
-<% @id = @item.id %>
-<% @path = items_path(@item) %>

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       resources :products, path: "products", as: "products", only: [:index, :new, :create]
       resources :item_lots, path: "lots", as: "lots", only: [:index, :new, :create]
       resources :item_transactions, path: "transactions", as: "transactions", only: [:index, :new, :create]
-      resources :lots_lookups, only: [:index]
+      resources :lots_lookups, only: [:index, :create]
     end
     resources :item_locations, as: "item_locations", only: [:destroy, :edit, :update, :show]
     resources :products, as: "products"

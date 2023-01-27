@@ -2,11 +2,9 @@
 
 <tr class="table-form-row">
 
-  <th scope="row" class="form-cell"><%= f.collection_select :item_id, Inventory::Item.all, :id, :code_with_name, {prompt: true}, {class: "form-control form-control-sm", id: "inv-trans-form-item-select-2"} %></th>
-
   <th class="form-group form-cell"><%= f.date_field :transaction_date, class: "form-control form-control-sm", id: "inv-transaction-date", value: "#{date_value}" %></th>
 
-  <th><%= f.collection_select :item_lot_id, Inventory::ItemLot.select(:lot_code).distinct, :id, :lot_code, {prompt: "..."}, {class: "form-control form-control-sm", id: "inv-trans-form-item-lot-select-2"} %></th>
+  <th><%= f.collection_select :item_lot_id, Inventory::ItemLot.select(:lot_code).distinct, :id, :lot_code, {prompt: "..."}, {class: "form-control form-control-sm", id: "inv-item-trans-form-item-lot-select"} %></th>
   <th><%= text_field_tag  "expires", "", readonly: true, class: "form-control-sm form-control text-right", id: "inv-trans-form-expires" %></th>
   <th><%= f.collection_select :location_id, Inventory::Location.all, :id, :name, {prompt: "..."}, {class: "form-control form-control-sm", id: "transaction-location"} %></th>
   <th><%= f.collection_select :transaction_type_id, Inventory::TransactionType.all, :id, :code, {prompt: "..."}, {class: "form-control form-control-sm", id: "inv-trans-form-type"} %></th>
@@ -33,21 +31,22 @@
 
 </tr>
 
-<tr class="collapse subform" id="inv-trans-index-subform-2">
+<tr class="collapse subform" id="inv-trans-index-subform">
   <td colspan="2"></td>
   <td colspan="2" class="table-form form-cell">
     <div class="card">
       <div class="card-body table-subform">
         <div class="form-group item-lot-text-group">
           <%= f.label :new_item_lot_code, "Lot code", class: "form-label" %>
-          <%= f.text_field :new_item_lot_code, class: "form-control form-control-sm", id: "new-item-lot-code-2" %>
+          <%= f.text_field :new_item_lot_code, class: "form-control form-control-sm", id: "new-item-lot-text" %>
         </div>
         <div class="form-group item-lot-text-group">
           <%= f.label :expire_date, "Expiration Date", class: "form-label" %>
-          <%= f.date_field :expire_date, class: "form-control form-control-sm", id: "new-item-expire_date-2" %>
-        </div>        
+          <%= f.date_field :expire_date, class: "form-control form-control-sm", id: "new-item-expire_date" %>
+        </div>
         <div class="form-group item-lot-button-group">
-          <%= button_tag 'Cancel', type: 'button', class: 'btn btn-sm btn-danger', id: 'inventory-transaction-new-lot-cancel' %>
+          <%= button_tag 'Okay', type: 'button', class: 'btn btn-sm btn-primary', id: 'inv-trans-new-lot-ok-btn' %>
+          <%= button_tag 'Edit', type: 'button', class: 'btn btn-sm btn-secondary', disabled: :true %>
         </div>
       </div>
     </div>

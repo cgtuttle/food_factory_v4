@@ -1,83 +1,66 @@
-<%= form_with(model: @transaction, url: transactions_path, role: 'form') do |f| %>
+<%= form_with(model: @transaction, url: transactions_path) do |f| %>
   <%= render 'layouts/alerts/errors', index: @transaction %>
 
   <div class="row">
-    <div class="col">
+    <div class="col-xl-8">  
 
-      <div class="form-group">
-        <%= f.collection_select :item_id, Inventory::Item.all, :id, :code_with_name, {prompt: true}, {class: "form-control", id: "new-transaction-form-item-select"} %>
-      </div>
-
-      <div id="item-dependent-controls">
-        <div class="form-group">
-
-          <div class="row">
-            <div class="col">
-              <%= f.label :item_lot %>
-            </div>
-          </div>
-
-          <div class="row mb-2">
-
-            <div class="col">
-              <div class="form-check" id="add-new-item-lot-group">
-                <%= check_box_tag "add_new", "add_new", false, class: "form-check-input", id: "add-new-item-lot" %>
-                <%= label_tag "add_new", "Add new", class: "form-check-label", for: "add-new-item-lot" %>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="row" id="item-lot-select-wrapper">
-            <div class="col">
-              <%= f.collection_select :item_lot_id, Inventory::ItemLot.all, :id, :lot_code, {prompt: true}, {class: "form-control", id: "new-transaction-form-item-lot-select"} %>
-            </div>
-          </div>
+      <div class="form-row pt-4">
+        <div class="form-group col-xl-2">
+          <%= f.label :transaction_date %>
+          <%= f.date_field :transaction_date, class: "form-control", id: "inv-transaction-date", value: "#{default_date(f.object.transaction_date)}" %>
         </div>
-
-        <div id="new-item-lot-wrapper">
-          <div class="form-group item-lot-text-group">
-            <%= label_tag :new_item_lot_text, "New Lot Code", class: "form-label" %>
-            <%= text_field_tag :new_item_lot_text, nil, class: "form-control", id: "new-item-lot-text" %>
-          </div>
-
-          <div class="form-group item-lot-date-group">
-            <%= label_tag :new_item_lot_date, "New Date Code", class: "form-label" %>
-            <%= date_field_tag :new_item_lot_date, nil, class: "form-control", id: "new-item-lot-date" %>
-          </div>
-
-        </div>
-
-        <div class="form-group">
+        <div class="form-group col-xl-3">
           <%= f.label :location %>
           <%= f.collection_select :location_id, Inventory::Location.all, :id, :name, {prompt: true}, {class: "form-control", id: "transaction-location"} %> 
         </div>
       </div>
 
-      <div class="form-group">
-        <%= f.label :transaction_type %>
-        <%= f.collection_select :transaction_type_id, Inventory::TransactionType.all, :id, :code, {prompt: true}, {class: "form-control"} %> 
+      <div class="form-row pt-4">
+        <div class="form-group col-xl-3">
+          <%= f.label :item %>
+          <%= f.collection_select :item_id, Inventory::Item.all, :id, :code_with_name, {prompt: true}, {class: "form-control", id: "inv-trans-form-item-select-1"} %>
+        </div>
+
+        <div class="form-group col-xl-2">
+          <%= f.label :item_lot %>
+          <%= f.collection_select :item_lot_id, Inventory::ItemLot.all, :id, :lot_code, {prompt: true}, {class: "form-control", id: "inv-trans-form-item-lot-select-1"} %>
+        </div>
       </div>
 
-      <div class="form-group">
-        <%= f.label :transaction_date %>
-        <%= f.date_field :transaction_date, class: "form-control", id: "inv-transaction-date", value: "#{default_date(f.object.transaction_date)}" %>
+      <div class="collapse" id="inv-trans-index-subform-1">
+        <div class="form-row pt-4">  
+          <div class="form-group item-lot-text-group col-xl-3">
+          <%= f.label :new_item_lot_code, "Lot code", class: "form-label" %>
+          <%= f.text_field :new_item_lot_code, class: "form-control form-control-sm", id: "new-item-lot-code-1" %>
+        </div>
+        <div class="form-group item-lot-text-group col-xl-3">
+          <%= f.label :expire_date, "Expiration Date", class: "form-label" %>
+          <%= f.date_field :expire_date, class: "form-control form-control-sm", id: "new-item-expire_date-1" %>
+        </div> 
+        </div>
       </div>
 
-      <div class="form-group transaction-qty_increase">
-        <%= f.label :base_qty_increase %>
-        <%= f.text_field :base_qty_increase, class: "form-control" %>
-      </div>
+      <div class="form-row pt-4">
+        <div class="form-group col-xl-2">
+          <%= f.label :transaction_type %>
+          <%= f.collection_select :transaction_type_id, Inventory::TransactionType.all, :id, :code, {prompt: true}, {class: "form-control"} %> 
+        </div>
 
-      <div class="form-group transaction-qty_decrease">
-        <%= f.label :base_qty_decrease %>
-        <%= f.text_field :base_qty_decrease, class: "form-control" %>
-      </div>
+        <div class="form-group transaction-qty_increase col-xl-2">
+          <%= f.label :base_qty_increase %>
+          <%= f.text_field :base_qty_increase, class: "form-control" %>
+        </div>
 
+        <div class="form-group transaction-qty_decrease col-xl-2">
+          <%= f.label :base_qty_decrease %>
+          <%= f.text_field :base_qty_decrease, class: "form-control" %>
+        </div>
+        
+      </div>
     </div>
   </div>
 
-  <div class="row mt-3">
+  <div class="row mt-5">
     <div class="col">
       <div class="form-group">
         <%= f.submit 'Submit', :class => 'btn btn-primary' %>
